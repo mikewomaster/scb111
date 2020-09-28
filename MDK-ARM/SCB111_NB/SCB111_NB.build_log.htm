@@ -1,0 +1,213 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.25.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: michael jackson, womaster, LIC=5852Z-JVKL3-XUL41-CJ441-UUXXQ-3U40G
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.25.2.0
+Toolchain Path:  E:\keli\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.25.2.0
+Dialog DLL:      DARMCM1.DLL V1.19.1.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
+Dialog DLL:      TARMCM1.DLL V1.14.0.0
+ 
+<h2>Project:</h2>
+D:\svn\nbNode\SCB111_MB_NB\SIMCOM7070\SCB111_NB\MDK-ARM\SCB111_NB.uvprojx
+Project File Date:  08/24/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\keli\ARM\ARMCC\Bin'
+Build target 'SCB111_NB'
+compiling main.c...
+../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
+  void usbModbusProcess();
+../Inc/main.h(47): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
+  static void nbiotDetect();
+..\Src\nbiot\nbiot.h(69): warning:  #1295-D: Deprecated declaration nbiot_poweroff_on - give arg types
+  void nbiot_poweroff_on();
+../Inc/nb_tcp.h(32): warning:  #1295-D: Deprecated declaration TCPReceiveHandle - give arg types
+  void TCPReceiveHandle();
+../Inc/nb_tcp.h(33): warning:  #1295-D: Deprecated declaration TCPCloseHandle - give arg types
+  void TCPCloseHandle();
+../Inc/nb_tcp.h(34): warning:  #1295-D: Deprecated declaration TCPDisConnectHandle - give arg types
+  void TCPDisConnectHandle();
+../Inc/tim.h(65): warning:  #1-D: last line of file ends without a newline
+  /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+../Inc/nb_mqtt.h(55): warning:  #1295-D: Deprecated declaration mqttSubHandle - give arg types
+  void mqttSubHandle ();
+../Inc/nb_mqtt.h(56): warning:  #1295-D: Deprecated declaration mqttCloseHandle - give arg types
+  void mqttCloseHandle ();
+../Inc/nb_mqtt.h(57): warning:  #1295-D: Deprecated declaration mqttDisconnectHandle - give arg types
+  void mqttDisconnectHandle ();
+../Inc/modbus_rtu_sensor.h(10): warning:  #1295-D: Deprecated declaration ModbusRtuMqtt - give arg types
+  void ModbusRtuMqtt();
+../Inc/modbus_rtu_sensor.h(11): warning:  #1295-D: Deprecated declaration ModbusRtuRcv - give arg types
+  void ModbusRtuRcv();
+../Inc/modbus_rtu_sensor.h(12): warning:  #1295-D: Deprecated declaration ModbusRtuUnitSndAndRcv - give arg types
+  void ModbusRtuUnitSndAndRcv();
+../Inc/modbus_rtu_sensor.h(19): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Inc/upload_method.h(5): warning:  #1295-D: Deprecated declaration tcpRcvAndSnd - give arg types
+  void tcpRcvAndSnd();
+../Inc/upload_method.h(6): warning:  #1295-D: Deprecated declaration rs485Mqtt - give arg types
+  void rs485Mqtt();
+../Inc/upload_method.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Src/main.c(159): warning:  #177-D: variable "pNbTcp"  was declared but never referenced
+  	gNbTCP *pNbTcp = &nb_tcp;
+../Src/main.c: 18 warnings, 0 errors
+compiling modbus_rtu.c...
+../Inc/modbus_rtu_sensor.h(10): warning:  #1295-D: Deprecated declaration ModbusRtuMqtt - give arg types
+  void ModbusRtuMqtt();
+../Inc/modbus_rtu_sensor.h(11): warning:  #1295-D: Deprecated declaration ModbusRtuRcv - give arg types
+  void ModbusRtuRcv();
+../Inc/modbus_rtu_sensor.h(12): warning:  #1295-D: Deprecated declaration ModbusRtuUnitSndAndRcv - give arg types
+  void ModbusRtuUnitSndAndRcv();
+../Inc/modbus_rtu_sensor.h(19): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Inc/upload_method.h(5): warning:  #1295-D: Deprecated declaration tcpRcvAndSnd - give arg types
+  void tcpRcvAndSnd();
+../Inc/upload_method.h(6): warning:  #1295-D: Deprecated declaration rs485Mqtt - give arg types
+  void rs485Mqtt();
+../Inc/upload_method.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
+  void usbModbusProcess();
+../Inc/main.h(47): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
+  static void nbiotDetect();
+../Inc/nb_tcp.h(32): warning:  #1295-D: Deprecated declaration TCPReceiveHandle - give arg types
+  void TCPReceiveHandle();
+../Inc/nb_tcp.h(33): warning:  #1295-D: Deprecated declaration TCPCloseHandle - give arg types
+  void TCPCloseHandle();
+../Inc/nb_tcp.h(34): warning:  #1295-D: Deprecated declaration TCPDisConnectHandle - give arg types
+  void TCPDisConnectHandle();
+..\Src\modbus_rtu.c(131): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+  			HAL_UART_Transmit(&huart2, nb_tcp_rcv, strlen(nb_tcp_rcv), 10000);
+..\Src\modbus_rtu.c: 13 warnings, 0 errors
+compiling modbus_handle.c...
+../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
+  void usbModbusProcess();
+../Inc/main.h(47): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
+  static void nbiotDetect();
+../Inc/modbus_rtu_sensor.h(10): warning:  #1295-D: Deprecated declaration ModbusRtuMqtt - give arg types
+  void ModbusRtuMqtt();
+../Inc/modbus_rtu_sensor.h(11): warning:  #1295-D: Deprecated declaration ModbusRtuRcv - give arg types
+  void ModbusRtuRcv();
+../Inc/modbus_rtu_sensor.h(12): warning:  #1295-D: Deprecated declaration ModbusRtuUnitSndAndRcv - give arg types
+  void ModbusRtuUnitSndAndRcv();
+../Inc/modbus_rtu_sensor.h(19): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Src\modbus_handle.c(108): warning:  #111-D: statement is unreachable
+  		if( read_partition(PARTITION_USER_INFO, tmp2, param_config_tbl[PARTITION_USER_INFO].num) < 0 )
+..\Src\modbus_handle.c(108): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  		if( read_partition(PARTITION_USER_INFO, tmp2, param_config_tbl[PARTITION_USER_INFO].num) < 0 )
+..\Src\modbus_handle.c(120): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  		if( read_partition(PARTITION_SN, sn, param_config_tbl[PARTITION_SN].num) < 0 )
+..\Src\modbus_handle.c(135): warning:  #68-D: integer conversion resulted in a change of sign
+  			return -1;
+..\Src\modbus_handle.c(139): warning:  #68-D: integer conversion resulted in a change of sign
+  			return -1;
+..\Src\modbus_handle.c(141): warning:  #68-D: integer conversion resulted in a change of sign
+  			return -1;
+..\Src\modbus_handle.c(147): warning:  #188-D: enumerated type mixed with another type
+  	res = write_partition(part_n, tmp, param_config_tbl[part_n].num);
+..\Src\modbus_handle.c(147): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  	res = write_partition(part_n, tmp, param_config_tbl[part_n].num);
+..\Src\modbus_handle.c(177): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  			set_value_str(p, num, &tmp[offset]);
+..\Src\modbus_handle.c(185): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  			set_value_str(p, num, &tmp[offset]);
+..\Src\modbus_handle.c(189): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  			set_value_uint16(p, num, &tmp[offset]);
+..\Src\modbus_handle.c(195): warning:  #188-D: enumerated type mixed with another type
+  	res = write_partition(part_n, tmp, sizeof(nbiot_config_t));
+..\Src\modbus_handle.c(232): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  			set_value_str(p, num, &tmp[offset]);
+..\Src\modbus_handle.c(236): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  			set_value_uint16(p, num, &tmp[offset]);	
+..\Src\modbus_handle.c(240): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  			set_value_uint32(p, num, &tmp[offset]);
+..\Src\modbus_handle.c(244): warning:  #188-D: enumerated type mixed with another type
+  	res = write_partition(part_n, tmp, sizeof(mqtt_config_t));
+..\Src\modbus_handle.c(213): warning:  #177-D: variable "p_mqtt"  was declared but never referenced
+  	char *p_mqtt = (char *)&mqtt_config;
+..\Src\modbus_handle.c(269): warning:  #188-D: enumerated type mixed with another type
+  	res = write_partition_more_seq(part_n, tmp, sizeof(rtuUnit), modbusRTUSeq);
+..\Src\modbus_handle.c(330): warning:  #188-D: enumerated type mixed with another type
+  	if( read_partition(part_n, (char *)tmp, param_config_tbl[part_n].num) < 0 )
+..\Src\modbus_handle.c(358): warning:  #188-D: enumerated type mixed with another type
+  	if (read_partition(part_n, tmp, sizeof(nbiot_config_t)) < 0) 
+..\Src\modbus_handle.c(367): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  				ret = get_value_str((char *)pcfg+offset, num, p);
+..\Src\modbus_handle.c(380): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  				ret = get_value_str(tmp+offset, num, p);
+..\Src\modbus_handle.c(352): warning:  #177-D: variable "i"  was declared but never referenced
+  	uint16_t i;
+..\Src\modbus_handle.c(396): warning:  #188-D: enumerated type mixed with another type
+  	if (read_partition(part_n, tmp, sizeof(mqtt_config_t)) < 0) 
+..\Src\modbus_handle.c(405): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  				ret = get_value_uint32(pcfg+offset, num, p);
+..\Src\modbus_handle.c(405): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  				ret = get_value_uint32(pcfg+offset, num, p);
+..\Src\modbus_handle.c(408): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  				ret = get_value_str((char *)pcfg+offset, num, p);
+..\Src\modbus_handle.c(421): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  				ret = get_value_uint32(tmp+offset, num, p);
+..\Src\modbus_handle.c(424): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  				ret = get_value_str(tmp+offset, num, p);
+..\Src\modbus_handle.c(440): warning:  #188-D: enumerated type mixed with another type
+  	if (read_partition_modbus_rtu(part_n, (char *)tmp, sizeof(rtuModbus)/2, offset) != -1) {
+..\Src\modbus_handle.c(478): warning:  #223-D: function "mqtt_read_status" declared implicitly
+  		mqtt_read_status(data, (addr-MQTT_STATUS_VALUE_START)*2, (uint16_t)num, n);
+..\Src\modbus_handle.c: 37 warnings, 0 errors
+compiling upload_method.c...
+../Inc/nb_mqtt.h(55): warning:  #1295-D: Deprecated declaration mqttSubHandle - give arg types
+  void mqttSubHandle ();
+../Inc/nb_mqtt.h(56): warning:  #1295-D: Deprecated declaration mqttCloseHandle - give arg types
+  void mqttCloseHandle ();
+../Inc/nb_mqtt.h(57): warning:  #1295-D: Deprecated declaration mqttDisconnectHandle - give arg types
+  void mqttDisconnectHandle ();
+..\Src\upload_method.c(16): warning:  #223-D: function "HAL_Delay" declared implicitly
+  			HAL_Delay(10);
+..\Src\upload_method.c(20): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+  	  pNbMqtt->mqttPub(buf, strlen(buf));
+..\Src\upload_method.c: 5 warnings, 0 errors
+linking...
+Program Size: Code=44128 RO-data=512 RW-data=896 ZI-data=13752  
+FromELF: creating hex file...
+"SCB111_NB\SCB111_NB.axf" - 0 Error(s), 73 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.3.0.pack
+                ARM.CMSIS.5.3.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.1.1
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32L0xx_DFP.2.0.0.pack
+                Keil.STM32L0xx_DFP.2.0.0
+                STMicroelectronics STM32L0 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_SCB111_NB
+  E:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include
+  E:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.1.1
+Build Time Elapsed:  00:00:15
+</pre>
+</body>
+</html>
