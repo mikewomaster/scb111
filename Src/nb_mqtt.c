@@ -125,7 +125,8 @@ static void SendMqttConf(AtCommand at, mqttConfig type)
 	at.type = writeAT;
 	at_command_factory(&at);
 
-	cmdRet = Send_AT_Command(at.cmd, "OK", 2000, 2000);
+	if (strlen(buf))
+		cmdRet = Send_AT_Command(at.cmd, "OK", 2000, 2000);
 }
 
 void mqttConfigureHandle (mqttConfig type)

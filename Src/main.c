@@ -164,7 +164,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */	
 
   while (1)
-  {	
+  {
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
 		if (usbPlugFlag == PlugIn) {
@@ -174,7 +174,7 @@ int main(void)
 			}
 
 			usbModbusProcess();
-		} 
+		}
 		else {
 			switch(nbiot_config.ulIotMode) {
 				case 0:
@@ -279,21 +279,11 @@ static void nbiotDetect()
 	HAL_Delay(10);
 	nbiot_init();
 	HAL_Delay(10);
-	nbiot_poweroff_on();	
+	nbiot_poweroff_on();
 }
 
 void MX_MQTT_Init(void)
 {
-	/*
-		mqttAddrSet(&nb_mqtt);
-		mqttTopicSet(&nb_mqtt);
-		mqttClientIdSet(&nb_mqtt);
-		mqttUsernameSet(&nb_mqtt);
-		mqttPasswordSet(&nb_mqtt);
-		mqttPortSet(&nb_mqtt);
-		mqttIntervalSet(&nb_mqtt);
-	*/
-
 	mqttOpenSet(&nb_mqtt, mqttOpenHandle);
 	mqttConnectSet(&nb_mqtt, mqttConnectHandle);
 	mqttConfigureSet(&nb_mqtt, mqttConfigureHandle);

@@ -28,7 +28,7 @@ void  DebugPrintf(char  *p_fmt, ...)
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET);
 		HAL_UART_Transmit(&huart2, (uint8_t *)str, len, 2000);
 		DelayMs(100);
-	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
 	#else
 		CDC_Transmit_FS((uint8_t *)str, len);
 		DelayMs(100);

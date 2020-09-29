@@ -3,7 +3,7 @@
 <title>Static Call Graph - [SCB111_NB\SCB111_NB.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image SCB111_NB\SCB111_NB.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Sep 28 15:21:32 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Sep 29 14:23:33 2020
 <BR><P>
 <H3>Maximum Stack Usage =       3448 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -352,6 +352,7 @@ Global Symbols
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_AT_Command
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uploadMQTT
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetMqttConf
+<LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SendMqttConf
 <LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nbiot_checkIsActive
 </UL>
 
@@ -3219,13 +3220,14 @@ Local Symbols
 <LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gsModbus_03_04_Response
 </UL>
 
-<P><STRONG><a name="[141]"></a>SendMqttConf</STRONG> (Thumb, 72 bytes, Stack size 96 bytes, nb_mqtt.o(i.SendMqttConf))
+<P><STRONG><a name="[141]"></a>SendMqttConf</STRONG> (Thumb, 82 bytes, Stack size 96 bytes, nb_mqtt.o(i.SendMqttConf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1416<LI>Call Chain = SendMqttConf &rArr; Send_AT_Command &rArr; DebugPrintf &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;at_command_factory
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;at_command_content
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send_AT_Command
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetMqttConf
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mqttConfigureHandle

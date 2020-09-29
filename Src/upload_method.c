@@ -11,7 +11,7 @@ void uploadMQTT(char *buf)
 		pNbMqtt->mqttOpen();
 
 		mqttConfig type;
-		for (type = URL; type < ClientID; type++) {
+		for (type = URL; type <= ClientID; type++) {
 			pNbMqtt->mqttConfigure(type);
 			HAL_Delay(10);
 		}

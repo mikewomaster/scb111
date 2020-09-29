@@ -705,4 +705,15 @@ void test_rcv()
 		
 			DebugPrintf("%s,%s,%s,%s,%s", p_mqtt_t+0, p_mqtt_t+34, p_mqtt_t+98, p_mqtt_t+134, p_mqtt_t+150);
 			HAL_Delay(10000);
+			
+/*
+	mqttAddrSet(&nb_mqtt);
+	mqttTopicSet(&nb_mqtt);
+	mqttClientIdSet(&nb_mqtt);
+	mqttUsernameSet(&nb_mqtt);
+	mqttPasswordSet(&nb_mqtt);
+	mqttPortSet(&nb_mqtt);
+	mqttIntervalSet(&nb_mqtt);
+*/
+
 #endif
