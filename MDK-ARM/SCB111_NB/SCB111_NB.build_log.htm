@@ -27,7 +27,169 @@ Project File Date:  10/12/2020
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\keli\ARM\ARMCC\Bin'
 Build target 'SCB111_NB'
-"SCB111_NB\SCB111_NB.axf" - 0 Error(s), 0 Warning(s).
+compiling at_command.c...
+compiling nb_tcp.c...
+../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
+  void usbModbusProcess();
+../Inc/main.h(47): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
+  static void nbiotDetect();
+..\Src\nbiot\nbiot.h(69): warning:  #1295-D: Deprecated declaration nbiot_poweroff_on - give arg types
+  void nbiot_poweroff_on();
+../Inc/nb_tcp.h(32): warning:  #1295-D: Deprecated declaration TCPReceiveHandle - give arg types
+  void TCPReceiveHandle();
+../Inc/nb_tcp.h(33): warning:  #1295-D: Deprecated declaration TCPCloseHandle - give arg types
+  void TCPCloseHandle();
+../Inc/nb_tcp.h(34): warning:  #1295-D: Deprecated declaration TCPDisConnectHandle - give arg types
+  void TCPDisConnectHandle();
+..\Src\nb_tcp.c(65): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+  	cmdRet = Send_AT_Command(szMsg, "OK", 5000, 5000);
+..\Src\nb_tcp.c(60): warning:  #550-D: variable "cmdRet"  was set but never used
+  	int cmdRet;
+..\Src\nb_tcp.c(72): warning:  #177-D: variable "cmd"  was declared but never referenced
+  	char cmd[64] = {0};
+..\Src\nb_tcp.c(73): warning:  #550-D: variable "cmdRet"  was set but never used
+  	int cmdRet, len;
+..\Src\nb_tcp.c(73): warning:  #177-D: variable "len"  was declared but never referenced
+  	int cmdRet, len;
+..\Src\nb_tcp.c(90): warning:  #550-D: variable "cmdRet"  was set but never used
+  	int cmdRet;
+..\Src\nb_tcp.c(100): warning:  #550-D: variable "cmdRet"  was set but never used
+  	int cmdRet;
+..\Src\nb_tcp.c: 13 warnings, 0 errors
+compiling nb_mqtt.c...
+../Inc/nb_mqtt.h(55): warning:  #1295-D: Deprecated declaration mqttSubHandle - give arg types
+  void mqttSubHandle ();
+../Inc/nb_mqtt.h(56): warning:  #1295-D: Deprecated declaration mqttCloseHandle - give arg types
+  void mqttCloseHandle ();
+../Inc/nb_mqtt.h(57): warning:  #1295-D: Deprecated declaration mqttDisconnectHandle - give arg types
+  void mqttDisconnectHandle ();
+../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
+  void usbModbusProcess();
+../Inc/main.h(47): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
+  static void nbiotDetect();
+..\Src\nbiot\nbiot.h(69): warning:  #1295-D: Deprecated declaration nbiot_poweroff_on - give arg types
+  void nbiot_poweroff_on();
+..\Src\nb_mqtt.c(120): warning:  #550-D: variable "cmdRet"  was set but never used
+  	int cmdRet;
+..\Src\nb_mqtt.c(134): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+  	int cmdRet = 0;
+..\Src\nb_mqtt.c(143): warning:  #550-D: variable "cmdRet"  was set but never used
+  	int cmdRet = 0;
+..\Src\nb_mqtt.c(167): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  	Send_AT_Command(msg, "OK", 10000, 7000);
+..\Src\nb_mqtt.c(150): warning:  #177-D: variable "cmd"  was declared but never referenced
+  	char cmd[64] = {0};
+..\Src\nb_mqtt.c(151): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+  	int cmdRet;
+..\Src\nb_mqtt.c(152): warning:  #177-D: variable "retry_count"  was declared but never referenced
+  	int retry_count = 0;
+..\Src\nb_mqtt.c(174): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+  	int cmdRet = 0;
+..\Src\nb_mqtt.c(209): warning:  #223-D: function "DelayMs" declared implicitly
+  			DelayMs(1000);
+..\Src\nb_mqtt.c(223): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+  	int cmdRet = 0;
+..\Src\nb_mqtt.c(235): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+    int cmdRet = 0;
+..\Src\nb_mqtt.c(249): warning:  #940-D: missing return statement at end of non-void function "mqttCheckStatusHandle" 
+  }
+..\Src\nb_mqtt.c: 18 warnings, 0 errors
+compiling at_ssl.c...
+../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
+  void usbModbusProcess();
+../Inc/main.h(47): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
+  static void nbiotDetect();
+..\Src\nbiot\nbiot.h(69): warning:  #1295-D: Deprecated declaration nbiot_poweroff_on - give arg types
+  void nbiot_poweroff_on();
+../Inc/at_ssl.h(49): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Src\at_ssl.c(13): warning:  #550-D: variable "cmdRet"  was set but never used
+  	int cmdRet = 0;
+..\Src\at_ssl.c: 5 warnings, 0 errors
+compiling nbiot.c...
+../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
+  void usbModbusProcess();
+../Inc/main.h(47): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
+  static void nbiotDetect();
+..\Src\nbiot\nbiot.h(69): warning:  #1295-D: Deprecated declaration nbiot_poweroff_on - give arg types
+  void nbiot_poweroff_on();
+..\Src\nbiot\nbiot.c(238): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+  		HAL_UART_Transmit(&huart1, at_cmd, at_cmd_length, wait_time);
+..\Src\nbiot\nbiot.c(242): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+  		HAL_UART_Transmit(&huart1, msg, strlen(msg), wait_time);
+..\Src\nbiot\nbiot.c(309): warning:  #940-D: missing return statement at end of non-void function "Send_AT_Command_2" 
+  }
+..\Src\nbiot\nbiot.c(359): warning:  #940-D: missing return statement at end of non-void function "nbiot_init" 
+  }
+..\Src\nbiot\nbiot.c(321): warning:  #550-D: variable "ret"  was set but never used
+  	int ret = -1;
+..\Src\nbiot\nbiot.c(432): warning:  #181-D: argument is incompatible with corresponding format string conversion
+  		item = sscanf(g_nbiot_RxBuffer,"+CGATT: %d",&ret);
+..\Src\nbiot\nbiot.c(445): warning:  #177-D: variable "ret"  was declared but never referenced
+  	int item = 0, ret = 0;
+..\Src\nbiot\nbiot.c(590): warning:  #550-D: variable "cmdRet"  was set but never used
+  	uint8_t cmdRet = 0;
+..\Src\nbiot\nbiot.c(639): warning:  #181-D: argument is incompatible with corresponding format string conversion
+  			item = sscanf(g_nbiot_RxBuffer,"+CGREG: 0,%d",&PS_attach);
+..\Src\nbiot\nbiot.c(654): warning:  #181-D: argument is incompatible with corresponding format string conversion
+  		item = sscanf(g_nbiot_RxBuffer,"+CGPADDR: %d,\"%[^\"]\"",&cid_temp,szIpaddr);
+..\Src\nbiot\nbiot.c(669): warning:  #181-D: argument is incompatible with corresponding format string conversion
+  		item = sscanf(g_nbiot_RxBuffer,"+CGPADDR: %d,\"%[^\"]\"",&cid_temp,szIpaddr);
+..\Src\nbiot\nbiot.c(610): warning:  #177-D: variable "szBuf"  was declared but never referenced
+  	char szBuf[20];
+..\Src\nbiot\nbiot.c(705): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  			ret = get_value_str(szIpaddr, sizeof(szIpaddr), p);
+..\Src\nbiot\nbiot.c(715): warning:  #550-D: variable "cmdRet"  was set but never used
+  	uint8_t cmdRet = 0;
+..\Src\nbiot\nbiot.c(726): warning:  #550-D: variable "item"  was set but never used
+  	int item = 0;
+..\Src\nbiot\nbiot.c(853): warning:  #223-D: function "atoi" declared implicitly
+  					stm.tm_hour = rtc_hour + atoi(zone)/4;
+..\Src\nbiot\nbiot.c(816): warning:  #177-D: variable "rtc_tz"  was declared but never referenced
+  	int rtc_hour = 0,rtc_minute = 0,rtc_sec = 0,rtc_tz=0;
+..\Src\nbiot\nbiot.c(818): warning:  #550-D: variable "timestamp"  was set but never used
+  	unsigned int timestamp;
+..\Src\nbiot\nbiot.c(901): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+  		if(strlen(mqtt_config.szServer) == 0)
+..\Src\nbiot\nbiot.c(883): warning:  #550-D: variable "item"  was set but never used
+  	int item = 0;
+..\Src\nbiot\nbiot.c(886): warning:  #177-D: variable "i"  was declared but never referenced
+  	int i=0,j=0;
+..\Src\nbiot\nbiot.c(886): warning:  #177-D: variable "j"  was declared but never referenced
+  	int i=0,j=0;
+..\Src\nbiot\nbiot.c(978): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  			ret = get_value_str(szIpaddr, sizeof(szIpaddr), p);
+..\Src\nbiot\nbiot.c(954): warning:  #177-D: variable "cmd"  was declared but never referenced
+  	char cmd[CMD_LENGTH];
+..\Src\nbiot\nbiot.c(955): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+  	uint8_t cmdRet = 0;
+..\Src\nbiot\nbiot.c(956): warning:  #177-D: variable "item"  was declared but never referenced
+  	int item = 0;
+..\Src\nbiot\nbiot.c(957): warning:  #177-D: variable "idx"  was declared but never referenced
+  	int idx = -1;
+..\Src\nbiot\nbiot.c(1075): warning:  #223-D: function "RtcEnterLowPowerStopMode" declared implicitly
+  	RtcEnterLowPowerStopMode( );
+..\Src\nbiot\nbiot.c(1020): warning:  #177-D: variable "szMsg"  was declared but never referenced
+  	char szMsg[200]={'\0'};
+..\Src\nbiot\nbiot.c(1021): warning:  #177-D: variable "szlen"  was declared but never referenced
+  	uint16_t szlen;
+..\Src\nbiot\nbiot.c(1023): warning:  #177-D: variable "item"  was declared but never referenced
+  	int item = 0;
+..\Src\nbiot\nbiot.c(1024): warning:  #177-D: variable "PS_attach"  was declared but never referenced
+  	int PS_attach = 0;
+..\Src\nbiot\nbiot.c(1025): warning:  #177-D: variable "idx"  was declared but never referenced
+  	int idx,status = 0;
+..\Src\nbiot\nbiot.c(1025): warning:  #177-D: variable "status"  was declared but never referenced
+  	int idx,status = 0;
+..\Src\nbiot\nbiot.c(1026): warning:  #177-D: variable "i"  was declared but never referenced
+  	int i=0,j=0;
+..\Src\nbiot\nbiot.c(1026): warning:  #177-D: variable "j"  was declared but never referenced
+  	int i=0,j=0;
+..\Src\nbiot\nbiot.c: 39 warnings, 0 errors
+linking...
+Program Size: Code=44140 RO-data=512 RW-data=896 ZI-data=13752  
+FromELF: creating hex file...
+"SCB111_NB\SCB111_NB.axf" - 0 Error(s), 75 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +212,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.1
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

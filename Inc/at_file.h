@@ -6,16 +6,16 @@
 
 typedef struct _AT_File_ {
 	void (*init) (void);
-	void (*write) (char*, int);
+	void (*write) (char*, char*, int);
 	void (*read) (char*, int);
-	void (*check) (void);
+	void (*check) (char*);
 	void (*free) (void);
 } AtFile;
 
 void AtFileInitHanle(void);
 void AtFileReadHandle(char*, int);
-void AtFileWriteHanlde(char*, int);
-void AtFileCheckHandle(void);
+void AtFileWriteHanlde(char*, char*, int);
+void AtFileCheckHandle(char*);
 void AtFileFreeHandle(void);
 
 #endif
