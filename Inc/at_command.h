@@ -16,7 +16,7 @@ typedef struct __command{
 }AtCommand;
 
 void at_command_factory(AtCommand*);
-void at_command_parament(AtCommand* , char* );
-void at_command_content(AtCommand* , char* );
+void at_command_parament(AtCommand* , const char*);
+void at_command_content(AtCommand* , const char*);
 
 #endif

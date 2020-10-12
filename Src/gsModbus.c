@@ -197,16 +197,16 @@ void gsModbus_01_02_Response(gsModbus *pModbus)
 		
 void gsModbus_03_04_Response(gsModbus *pModbus)
 {
-	unsigned char tx_buf[253]	=	{0};																													
-	unsigned char *Tx_pBuff		= tx_buf;																												
-	unsigned short reply_crc 	= 0x00;																															
+	unsigned char tx_buf[253]	=	{0};
+	unsigned char *Tx_pBuff		= tx_buf;
+	unsigned short reply_crc 	= 0x00;
 	unsigned short funcVal;
-	unsigned char i, res;																											
-																							
-	*(Tx_pBuff++) = pModbus->Address;																													
-	*(Tx_pBuff++) = pModbus->Function_Code;																										
-	*(Tx_pBuff++) =(unsigned char)(pModbus->Regist_Size*2);																		
-		
+	unsigned char i, res;
+
+	*(Tx_pBuff++) = pModbus->Address;
+	*(Tx_pBuff++) = pModbus->Function_Code;
+	*(Tx_pBuff++) =(unsigned char)(pModbus->Regist_Size*2);
+
 	res = Modbus_Frame_Check(pModbus->Function_Code, pModbus->Regist_Addr+1, 0, pModbus->Regist_Size*2);
 	if( res >= 0xf0 )
 	{
@@ -219,12 +219,12 @@ void gsModbus_03_04_Response(gsModbus *pModbus)
 	{
 		exchangeBytes(Tx_pBuff);
 		Tx_pBuff += 2;
-	}	
+	}
 
-	reply_crc = crc_Compute(tx_buf,3+pModbus->Regist_Size*2);																	
-	*(Tx_pBuff++) =(unsigned char)reply_crc;																									
-	*(Tx_pBuff++) =(unsigned char)(reply_crc>>8);																							
-	pModbus->gsModbus_PutData(tx_buf,5+pModbus->Regist_Size*2);																
+	reply_crc = crc_Compute(tx_buf,3+pModbus->Regist_Size*2);
+	*(Tx_pBuff++) =(unsigned char)reply_crc;
+	*(Tx_pBuff++) =(unsigned char)(reply_crc>>8);
+	pModbus->gsModbus_PutData(tx_buf,5+pModbus->Regist_Size*2);
 }
  
 void gsModbus_05_06_Response(gsModbus *pModbus)

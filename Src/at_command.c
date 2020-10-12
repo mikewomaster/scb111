@@ -4,13 +4,13 @@
 
 #include "at_command.h"
 
-void at_command_parament(AtCommand* at, char* parament)
+void at_command_parament(AtCommand* at, const char* parament)
 {
 		memset(at->para, 0, sizeof(at->para));
 		strcpy(at->para, parament);
 }
 
-void at_command_content(AtCommand* at, char* context)
+void at_command_content(AtCommand* at, const char* context)
 {
 		memset(at->cnt, 0, sizeof(at->cnt));
 		strcpy(at->cnt, context);

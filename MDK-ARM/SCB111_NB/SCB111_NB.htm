@@ -3,7 +3,7 @@
 <title>Static Call Graph - [SCB111_NB\SCB111_NB.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image SCB111_NB\SCB111_NB.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Sep 29 14:23:33 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Oct 12 14:59:28 2020
 <BR><P>
 <H3>Maximum Stack Usage =       3448 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1194,8 +1194,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RtcStartWakeUpAlarm
-<LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_IRQHandler
+<LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RtcStartWakeUpAlarm
 </UL>
 
 <P><STRONG><a name="[e6]"></a>HAL_RTC_GetDate</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, stm32l0xx_hal_rtc.o(i.HAL_RTC_GetDate))
@@ -1364,11 +1364,11 @@ Global Symbols
 <P><STRONG><a name="[fd]"></a>HAL_UART_IRQHandler</STRONG> (Thumb, 456 bytes, Stack size 32 bytes, stm32l0xx_hal_uart.o(i.HAL_UART_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = HAL_UART_IRQHandler &rArr; HAL_DMA_Abort_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTransmit_IT
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
+<BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_WakeupCallback
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTransmit_IT
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
@@ -3500,8 +3500,8 @@ Local Symbols
 <P><STRONG><a name="[138]"></a>RtcConvertCalendarTickToTimerTime</STRONG> (Thumb, 224 bytes, Stack size 64 bytes, rtc-board.o(i.RtcConvertCalendarTickToTimerTime))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = RtcConvertCalendarTickToTimerTime &rArr; RtcGetCalendar &rArr; HAL_RTC_GetTime
 </UL>
-<BR>[Calls]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RtcGetCalendar
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RtcGetCalendar
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RtcGetElapsedAlarmTime
 </UL>
@@ -3546,9 +3546,9 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_SetAlarm_IT
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_DeactivateAlarm
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RtcGetCalendar
 <LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RtcComputeTimerTimeToAlarmTick
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RtcSetTimeout
 </UL>

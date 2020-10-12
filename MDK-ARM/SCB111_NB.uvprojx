@@ -496,6 +496,11 @@
               <FileType>5</FileType>
               <FilePath>..\Inc\upload_method.h</FilePath>
             </File>
+            <File>
+              <FileName>at_ssl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\at_ssl.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
