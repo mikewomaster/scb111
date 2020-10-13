@@ -38,6 +38,7 @@
 #include "modbus_rtu.h"
 #include "modbus_rtu_sensor.h"
 #include "upload_method.h"
+#include "at_file.h"
 
 /* USER CODE END Includes */
 
@@ -102,6 +103,8 @@ extern int detachFlag;
 extern sensorData g_sensorData;
 extern uint8_t ModbusRtuSendFlag;
 
+extern AtFile atFile;
+
 gsModbus modbus_slave;
 gNbTCP nb_tcp;
 gNbMQTT nb_mqtt;
@@ -153,6 +156,7 @@ int main(void)
 	MX_NB_Init();
 	MX_WoMaster_Init();
 	MX_MQTT_Init();
+	ATFileInit();
 	nbiotDetect();
 	HAL_Delay(10);
 		
@@ -169,7 +173,11 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		if (usbPlugFlag == PlugIn) {
 			if (usb_rcv_flag) {
-				gsModbus_Processor(&modbus_slave, usb_rcv_buff, usb_rcv_len);
+				if (usb_rcv_buff[0] == 0xaa && usb_rcv_buff[1] == 0xbb && usb_rcv_buff[2] == 0xcc)
+					ATFileWriteProcess();
+				else
+					gsModbus_Processor(&modbus_slave, usb_rcv_buff, usb_rcv_len);
+
 				usb_rcv_flag = 0;
 			}
 

@@ -21,6 +21,7 @@
 "scb111_nb\modbus_rtu.o"
 "scb111_nb\upload_method.o"
 "scb111_nb\at_ssl.o"
+"scb111_nb\at_file.o"
 "scb111_nb\stm32l0xx_hal_pcd.o"
 "scb111_nb\stm32l0xx_hal_pcd_ex.o"
 "scb111_nb\stm32l0xx_ll_usb.o"

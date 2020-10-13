@@ -63,3 +63,5 @@ scb111_nb\main.o: ../Inc/nb_mqtt.h
 scb111_nb\main.o: ../Inc/modbus_rtu.h
 scb111_nb\main.o: ../Inc/modbus_rtu_sensor.h
 scb111_nb\main.o: ../Inc/upload_method.h
+scb111_nb\main.o: ../Inc/at_file.h
+scb111_nb\main.o: ../Inc/at_ssl.h

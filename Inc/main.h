@@ -48,7 +48,6 @@ static void nbiotDetect();
 
 extern void MX_USART2_UART_Init(void);
 extern void BoardInitMcu(void);
-
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
