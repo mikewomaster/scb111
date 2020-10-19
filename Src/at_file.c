@@ -89,24 +89,25 @@ void ATFileInit()
 	atFile.free = AtFileFreeHandle;
 }
 
-void ATFileWriteProcess()
+void ATFileWriteProcess(char *fileName, char* content)
 {
+		char fileNameBuffer[8];
+		strcpy(fileNameBuffer, fileName);
+
 		nbiot_poweroff_on();
+		HAL_Delay(100);
 
-		char buf[16];
-		memset(buf, 0, sizeof(buf));
-		sprintf(buf, "%d.key", usb_rcv_buff[3]);
-
-		HAL_Delay(10);
 		atFile.init();
-		// atFile.read("1.txt", 20);
-		atFile.write(usb_rcv_buff + 4, buf, strlen(usb_rcv_buff) - 4);
-		HAL_Delay(20);
+		HAL_Delay(100);
+		
+		atFile.write(content, fileNameBuffer, strlen(content) - 8); // without the 8 char at the end 'endwowow'
+		HAL_Delay(200);
 
-		atFile.check(buf);
-		HAL_Delay(10);
-	
-		// atFile.free();
-		// HAL_Delay(10);
+		atFile.check(fileNameBuffer);
+		HAL_Delay(100);
+
+		atFile.free();
+		HAL_Delay(100);
+
 		nbiot_poweroff_on();
 }

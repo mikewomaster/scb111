@@ -164,20 +164,41 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* USER CODE BEGIN 2 */
-	/* USER CODE END 2 */
-  /* USER CODE BEGIN WHILE */	
+	int sslFileFlag = 0;
+	char stackBigBuffer[2048];
+	char sslBuf[8];	
 
+	memset(stackBigBuffer, 0 , sizeof(stackBigBuffer));
+	memset(sslBuf, 0, sizeof(sslBuf));
+	/* USER CODE END 2 */
+  /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-    /* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */		
 		if (usbPlugFlag == PlugIn) {
 			if (usb_rcv_flag) {
-				if (usb_rcv_buff[0] == 0xaa && usb_rcv_buff[1] == 0xbb && usb_rcv_buff[2] == 0xcc)
-					ATFileWriteProcess();
-				else
+				if (usb_rcv_buff[0] == 0xaa && usb_rcv_buff[1] == 0xbb && usb_rcv_buff[2] == 0xcc) {
+						strcat(stackBigBuffer, usb_rcv_buff + 4);
+						sprintf(sslBuf, "%d.ssl", usb_rcv_buff[3]);
+						sslFileFlag = 1;
+						memset(usb_rcv_buff, 0, sizeof(usb_rcv_buff));
+				} else if (sslFileFlag) {
+						if(strstr(usb_rcv_buff, "endwowow") == NULL) {
+							strcat(stackBigBuffer, usb_rcv_buff);
+							memset(usb_rcv_buff, 0, sizeof(usb_rcv_buff));
+						}
+						else {
+							sslFileFlag = 0;
+							strcat(stackBigBuffer, usb_rcv_buff);
+							memset(usb_rcv_buff, 0, sizeof(usb_rcv_buff));
+							ATFileWriteProcess(sslBuf, stackBigBuffer);
+							memset(sslBuf, 0, sizeof(sslBuf));
+							memset(stackBigBuffer, 0, sizeof(stackBigBuffer));
+						}
+				} else {
 					gsModbus_Processor(&modbus_slave, usb_rcv_buff, usb_rcv_len);
-
+				}
 				usb_rcv_flag = 0;
 			}
 
@@ -381,11 +402,15 @@ void MX_NB_Init(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	static uint16_t count = 0;
+	static int count = 0;
 
 	if(htim == (&htim6))
   {
-		count ++;
+		if(count >= 65536)
+			count = 0;
+		else
+			count ++;
+		
 		if(count / (mqtt_config.ulInterval)) {
 			 timer6 = 1;
 			 count = 0;

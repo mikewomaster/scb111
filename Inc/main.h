@@ -44,8 +44,8 @@ void SystemClock_Config(void);
 void MX_TIM6_Init(void);
 void uartConfigure(uint32_t, uint32_t, uint32_t);
 void usbModbusProcess();
+void usbHandle(char **, char**);
 static void nbiotDetect();
-
 extern void MX_USART2_UART_Init(void);
 extern void BoardInitMcu(void);
 /* USER CODE END ET */

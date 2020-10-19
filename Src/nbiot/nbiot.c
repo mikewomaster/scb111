@@ -156,24 +156,26 @@ int Send_AT_Command(char *cmd, char *result, uint32_t wait_time, uint32_t wait_t
 			}
 
 			DelayMs(20);
-	  } while(ret == 0 && times++ < 200);
+			if (times >= 1000)
+				BoardResetMcu();
+	  } while(ret == 0 && times++ < 1000);
 
-		DebugPrintf("value = %s\r\n", g_nbiot_RxBuffer);
+		DebugPrintf("value = %s, times = %d\r\n", g_nbiot_RxBuffer, times);
 		
 		// CHECK
-		if (times == 200)
+		if (times == 1000)
 			BoardResetMcu();
 		else
       nb_tcp_rcv_flag = 1;
 
-	/*	
+	/*
 	  if (times == 200 || (strstr(g_nbiot_RxBuffer, "PDP") && strstr(g_nbiot_RxBuffer,"DEACTIVE")))
 			BoardResetMcu();
 	*/
-		
+
 	 if (ret == 1 && strlen(result) > 0)
 	 {
-		 pch1 = strstr(g_nbiot_RxBuffer, cmd);		
+		 pch1 = strstr(g_nbiot_RxBuffer, cmd);
 		 if(pch1 != NULL)
 		 {
 			 index1 = (pch1 - g_nbiot_RxBuffer) + strlen(cmd);

@@ -4,6 +4,10 @@
 #include <stdint.h>
 #include "param.h"
 
+#define EPROM_WR_TYPE_BYTE 									((uint8_t)0x00)
+#define EPROM_WR_TYPE_HALF_WORD 						((uint8_t)0x01)
+#define EPROM_WR_TYPE_WORD 									((uint8_t)0x02)
+
 #define PARTITION_MAGIC_WORD (('R' << 0)|('L' << 8))
 
 typedef enum  {
@@ -22,6 +26,7 @@ typedef enum  {
 		PARTITION_11,
 		PARTITION_12,
 		PARTITION_13,
+		PARTITION_14,
 		// in memory
 		PARTITION_MEM_RESET,
 		PARTITION_MEM_SIGNAL,
@@ -42,8 +47,9 @@ typedef enum  {
 #define PARTITION_MODBUS_RTU		PARTITION_9
 #define PARTITION_NBIOT					PARTITION_10
 #define PARTITION_MQTT					PARTITION_11
-#define PARTITION_COAP					PARTITION_12
-#define PARTITION_DLMS					PARTITION_13
+#define PARTITION_SSL						PARTITION_12
+#define PARTITION_COAP					PARTITION_13
+#define PARTITION_DLMS					PARTITION_14
 
 #define p_log(...)    // e_printf("part:"##__VA_ARGS__)
 

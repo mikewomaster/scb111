@@ -139,6 +139,13 @@ typedef struct _mbus_md_device_cfg
 	uint8_t resv[18];
 } mbus_md_device_cfg;
 
+typedef struct __sslResult__ {
+	uint16_t sslMode;
+	uint16_t rootCARes;
+	uint16_t privCARes;
+	uint16_t priKeyRes;
+} ssl_result_t;
+
 #pragma pack ()
 
 #endif

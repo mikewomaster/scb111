@@ -18,5 +18,6 @@ void AtFileWriteHanlde(char*, char*, int);
 void AtFileCheckHandle(char*);
 void AtFileFreeHandle(void);
 
-void ATFileWriteProcess();
+void ATFileWriteProcess(char*, char*);
+
 #endif

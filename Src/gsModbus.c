@@ -21,12 +21,16 @@ uint8_t Modbus_Frame_Check(uint8_t func, uint16_t addr, uint16_t *data, uint16_t
 	{
 		return PARTITION_MODBUS_RTU;
 	}
+	else if ((addr >= SSL_VALUE_START) && (addr <= SSL_VALUE_END))
+	{
+		return PARTITION_SSL;
+	}
 	else if(addr < 1000)
 	{
 		for(i = 0; i < 10; i++)
 		{
 			if( addr>=param_config_tbl[i].base_addr && (addr+num/2-1)<(param_config_tbl[i].base_addr+param_config_tbl[i].num/2) )
-				return param_config_tbl[i].part_tbl_n;		
+				return param_config_tbl[i].part_tbl_n;
 		}
 	}
 	else if((addr >= NBIOT_VALUE_START) && (addr <= NBIOT_VALUE_END))

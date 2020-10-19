@@ -209,7 +209,7 @@ void mqttConnectHandle (void)
 			DelayMs(1000);
 			retry_count++;
 		}
-	}while(retry_count <= 7);
+	} while(retry_count <= 7);
 
 	if (retry_count > 7)
 		mqtt_status = 0;
@@ -240,7 +240,7 @@ void mqttCloseHandle ()
 	at.type = writeAT;
 
 	mqttATSend(at, "OK");
-	nbiot_status = CEL_DISCONNECTED;	
+	nbiot_status = CEL_DISCONNECTED;
 }
 
 uint8_t mqttCheckStatusHandle (void)

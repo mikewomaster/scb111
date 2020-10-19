@@ -33,6 +33,8 @@ uint8_t b_mqtt_Config_Changed = 0;
 
 __align(4) userinfo user_info_default = {{'a','d','m','i','n',0},{'a','d','m','i','n',0}};
 
+ssl_result_t ssl_result;
+
 void Modbus_Slave_USBPutData(uint8_t *buf, uint32_t len)
 {
 	// FIX ME: reason for delay
@@ -273,6 +275,28 @@ int modbus_rtu_write_cfg(uint16_t *data, uint16_t offset, uint16_t num, uint16_t
 	return res;
 }
 
+int sslResWrite(uint16_t *data, uint16_t offset, uint16_t num, uint16_t part_n)
+{
+	char tmp[200];
+	uint8_t res;
+	uint8_t* p = (uint8_t*)data;
+	char *p_ssl = (char *)&ssl_result;
+	if(data == NULL || num <= 0)
+		return -1;
+
+	memset(tmp, '\0', sizeof(tmp));
+	memcpy(tmp, (uint8_t*)&ssl_result, sizeof(ssl_result));
+	memset(&tmp[offset], '\0', num);
+	memcpy(&tmp[offset], p, num);
+	
+	res = write_partition(part_n, tmp, sizeof(ssl_result_t));
+	if( res == 0 ) {
+		memcpy((uint8_t*)&ssl_result, tmp, sizeof(ssl_result_t));
+	}
+
+	return res;
+}
+
 uint8_t Do_W_HOLD_REG_Function(uint16_t addr, uint16_t *data, uint16_t num, uint8_t n)	
 {
 
@@ -287,6 +311,10 @@ uint8_t Do_W_HOLD_REG_Function(uint16_t addr, uint16_t *data, uint16_t num, uint
 	else if((addr >= MQTT_VALUE_START) && (addr <= MQTT_VALUE_END))
 	{
 		return mqtt_write_cfg(data, (addr-MQTT_VALUE_START)*2, (uint16_t)num, n);
+	}
+	else if (addr >= SSL_VALUE_START && addr <= SSL_VALUE_END)
+	{
+		return sslResWrite(data, (addr-SSL_VALUE_START)*2, (uint16_t)num, n);
 	}
 	else if(addr < 1000)
 	{
@@ -451,11 +479,31 @@ int modbus_rtu_read_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t p
 	return ret;
 }
 
+int sslResRead(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n)
+{
+	uint8_t *pcfg;
+	uint8_t *p = (uint8_t *)data;
+	char tmp[200]={'\0'};
+	int ret = 0;
+	pcfg = (uint8_t *)&ssl_result;
+
+	if (read_partition(part_n, tmp, sizeof(ssl_result)) < 0)
+		memcpy(p, pcfg + offset, num);
+	else
+		memcpy(p, tmp + offset, num);
+
+	return ret;
+}
+
 void Do_R_HOLD_REG_Function(unsigned short addr, unsigned short* data, uint16_t num, uint8_t n)
 {
 	if ((addr >= MODBUSRTU_VALUE_START) && (addr <= MODBUSRTU_VALUE_END))
 	{
 		modbus_rtu_read_cfg(data, (addr-MODBUSRTU_VALUE_START)*2, (uint16_t)num, n);
+	}
+	else if (addr >= SSL_VALUE_START && addr <= SSL_VALUE_END)
+	{
+		sslResRead(data, (addr-SSL_VALUE_START)*2, (uint16_t)num, n);
 	}
 	else if(addr < 1000)
 	{

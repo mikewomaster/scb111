@@ -4,10 +4,6 @@
 #include "main.h"
 #include "modbus_rtu.h"
 
-#define EPROM_WR_TYPE_BYTE 									((uint8_t)0x00)
-#define EPROM_WR_TYPE_HALF_WORD 						((uint8_t)0x01)
-#define EPROM_WR_TYPE_WORD 									((uint8_t)0x02)
-
 #define STM_EPROM_ADDR_BASE									((uint32_t)DATA_EEPROM_BASE)
 #define STM_EPROM_ADDR_END									((uint32_t)DATA_EEPROM_BASE+0x1800-1)
 
@@ -31,6 +27,7 @@
 
 #define NBIOT_EPROM_ADDR_BASE								MODBUS_UNIT_ADDR_BASE+sizeof(rtuModbus)+6
 #define MQTT_EPROM_ADDR_BASE								NBIOT_EPROM_ADDR_BASE+sizeof(nbiot_config_t)+6
+#define SSL_EPROM_ADDR_BASE									MQTT_EPROM_ADDR_BASE+sizeof(mqtt_config_t)+6
 
 #define COAP_EPROM_ADDR_BASE								MQTT_EPROM_ADDR_BASE+sizeof(mqtt_config_t)+6
 
@@ -81,6 +78,7 @@ static const struct partition_map_ partition_map[] =
 	// 6 + sizeof(mbus_md_device_cfg),	MBUS_EPROM_ADDR_BASE,			// PARTITION_9, mbus configuration
 	6 + sizeof(nbiot_config_t),	NBIOT_EPROM_ADDR_BASE,			// PARTITION_10, nbiot configuration
 	6 + sizeof(mqtt_config_t),	MQTT_EPROM_ADDR_BASE,			// PARTITION_11, mqtt configuration
+	6 + sizeof(ssl_result_t), SSL_EPROM_ADDR_BASE					// PARTITION_12, ssl configuration
 #if (SUPPORT_DLMS == 1)
 	6+sizeof(coap_config_t),	COAP_EPROM_ADDR_BASE,			// PARTITION_12, coap configuration
 	6+sizeof(dlms_config_t),	DLMS_EPROM_ADDR_BASE			// PARTITION_13, coap configuration
