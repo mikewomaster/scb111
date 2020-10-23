@@ -22,16 +22,17 @@ extern uint32_t g_uart_config_change;
 uart_config_t uart_config_default = {0, 8, 1, 0, 1};
 uart_config_t uart_config;
 
-__align(4) nbiot_config_t nbiot_config_default={"internet", "", "", 1};
+__align(4) nbiot_config_t nbiot_config_default={"internet", "", "", 0};
 nbiot_config_t nbiot_config;
 uint8_t b_nbiot_Config_Changed = 0;
 
 //__align(4) mqtt_config_t mqtt_config_default={"afalcolea.duckdns.org", 1883, "mqttchannel", "", "mqttuser", "Mqttuser@1", 900};
-__align(4) mqtt_config_t mqtt_config_default={"", 1883, "", "", 60, "", "" };
+__align(4) mqtt_config_t mqtt_config_default={"", 1883, "", "", 60, "", "", 100};
 mqtt_config_t mqtt_config;
 uint8_t b_mqtt_Config_Changed = 0;
 
 __align(4) userinfo user_info_default = {{'a','d','m','i','n',0},{'a','d','m','i','n',0}};
+__align(4) rtuModbus rtuModbus_default;
 
 ssl_result_t ssl_result;
 
@@ -141,6 +142,8 @@ uint8_t Write_Param(uint16_t *data, uint16_t offset, uint16_t num, uint16_t part
 			return -1;
 		if( 0 != write_partition(PARTITION_MQTT, (char *)&mqtt_config_default, sizeof(mqtt_config_t)))
 			return -1;
+		if( 0 != write_partition(PARTITION_MODBUS_RTU, (char *)&rtuModbus_default, sizeof(rtuModbus)))
+			return -1;
 
 		g_restore_flag = 1;
 		return 0;
@@ -233,8 +236,9 @@ int mqtt_write_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n
 				memset(&tmp[offset], '\0', 32);		
 			set_value_str(p, num, &tmp[offset]);
 			break;
-		
+
 		case 32:
+		case 166:
 			set_value_uint16(p, num, &tmp[offset]);	
 			break;
 		
@@ -267,7 +271,8 @@ int modbus_rtu_write_cfg(uint16_t *data, uint16_t offset, uint16_t num, uint16_t
 	memcpy(tmp, p, sizeof(tmp));
 
 	memcpy(&g_sensorData.sensorConf.rtuModbusTable[modbusRTUSeq], p, sizeof(tmp));
-
+	g_sensorData.value[modbusRTUSeq] = 0;
+	
 	res = write_partition_more_seq(part_n, tmp, sizeof(rtuUnit), modbusRTUSeq);
 	if( res == 0 )
 		modbusRTUSeq = 0;
@@ -426,10 +431,11 @@ int mqtt_read_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n)
 		switch(offset)
 		{
 			case 32:
+			case 166:
 				memcpy(p, (pcfg+offset), num);
 				ret = 1;
 				break;
-			case 130:
+			case 130:			
 				ret = get_value_uint32(pcfg+offset, num, p);
 				break;
 			default:
@@ -442,6 +448,7 @@ int mqtt_read_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n)
 		switch(offset)
 		{
 			case 32:
+			case 166:
 				memcpy(p, (tmp+offset), num);
 				ret = 1;
 				break;

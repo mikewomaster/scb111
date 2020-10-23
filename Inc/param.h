@@ -122,11 +122,13 @@ typedef struct
 typedef struct {
 	uint8_t		szServer[32];
 	uint16_t	ulPort;
+	// uint16_t  szRtuTimeout;
 	uint8_t		szTopic[64];
 	uint8_t		szClientID[32];
 	uint32_t	ulInterval;
 	uint8_t		szUserName[16];
 	uint8_t		szPassWord[16];
+	uint16_t  szRtuTimeout;
 } mqtt_config_t;
 
 typedef struct _mbus_md_device_cfg 

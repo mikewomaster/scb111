@@ -12,6 +12,12 @@ extern gNbMQTT nb_mqtt;
 char *p_mqtt_t = (char *) &mqtt_config;
 extern uint16_t mqtt_status;
 
+extern unsigned int gs_baudrate[10];
+extern uart_config_t uart_config;
+extern UART_HandleTypeDef huart2;
+
+extern nbiot_config_t nbiot_config;
+
 void mqttAddrSet(gNbMQTT* pNbMqtt)
 {
 	memcpy(pNbMqtt->mqttAddr, p_mqtt_t + 0, 32);
@@ -145,7 +151,7 @@ static void mqttATSend(AtCommand at, char* buf)
 	cmdRet = Send_AT_Command(at.cmd, buf, 2000, 2000);
 }
 
-void mqttPubHandle (uint8_t* msg, uint16_t len)
+void mqttPubHandle(uint8_t* msg, uint16_t len)
 {
 	char cmd[64] = {0};
 	int cmdRet;
@@ -169,7 +175,36 @@ void mqttPubHandle (uint8_t* msg, uint16_t len)
 	// Send_AT_Command_2(at.cmd, ">", 10000, 7000, 5000, msg);
 }
 
-void mqttSubHandle ()
+void mqttCheckAPN()
+{
+	int cmdRet = 0;
+
+	AtCommand at;
+	at_command_parament(&at, "CNCFG");
+	
+	at.type = readAT;
+	mqttATSend(at, "OK");
+}
+
+void mqttNetworkConfigHandle()
+{
+	char cmd[64] = {0};
+	int cmdRet;
+	int retry_count = 0;
+
+	char buf[64] = {0};
+	AtCommand at;
+	at_command_parament(&at, "CNCFG");
+
+	sprintf(buf, "%d, %d,\"%s\",\"%s\",\"%s\", 0", 0, 1, nbiot_config.szAPN, nbiot_config.szUserName, nbiot_config.szUserPassword);
+
+	at_command_content(&at, buf);
+	at.type = writeAT;
+
+	mqttATSend(at, "OK");
+}
+
+void mqttSubHandle()
 {
 	int cmdRet = 0;
 	char buf[64] = {0};
@@ -181,10 +216,46 @@ void mqttSubHandle ()
 
 	mqttATSend(at, "OK");	
 }
+static void mqttCheckOperator()
+{
+	AtCommand at;
+	at_command_parament(&at, "CPSI");
+	at.type = readAT;
+	mqttATSend(at, "OK");
+}
+
+void mqttSetService()
+{
+	int cmdRet = 0;
+	char buf[64] = {0};
+	AtCommand at;
+	at_command_parament(&at, "CNMP");
+	sprintf(buf, "%d", 13);
+	at_command_content(&at, buf);
+	at.type = writeAT;
+	mqttATSend(at, "OK");
+
+	HAL_Delay(20);
+
+	memset(buf, 0, sizeof(buf));
+	at_command_parament(&at, "CMNB");
+	sprintf(buf, "%d", 1);
+	at_command_content(&at, buf);
+	at.type = writeAT;
+	mqttATSend(at, "OK");
+}
 
 void mqttOpenHandle(void)
 {
+	// HAL_UART_DeInit(&huart2);
+	// mqttSetService();
+	mqttNetworkConfigHandle();
+	HAL_Delay(20);
 	nbiot_init();
+	mqttCheckAPN();
+	mqttCheckOperator();
+	HAL_Delay(100);
+		// uartConfigure(gs_baudrate[uart_config.baudrate], uart_config.parity, uart_config.stopBits);
 }
 
 void mqttConnectHandle (void)

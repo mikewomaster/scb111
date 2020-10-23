@@ -6,6 +6,7 @@ scb111_nb\modbus_rtu.o: ../Inc/function.h
 scb111_nb\modbus_rtu.o: ../Inc/modbus_rtu_sensor.h
 scb111_nb\modbus_rtu.o: ../Inc/modbus_rtu.h
 scb111_nb\modbus_rtu.o: ../Inc/upload_method.h
+scb111_nb\modbus_rtu.o: ../Inc/param.h
 scb111_nb\modbus_rtu.o: ../Inc/main.h
 scb111_nb\modbus_rtu.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 scb111_nb\modbus_rtu.o: ../Inc/stm32l0xx_hal_conf.h

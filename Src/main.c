@@ -104,6 +104,7 @@ extern sensorData g_sensorData;
 extern uint8_t ModbusRtuSendFlag;
 
 extern AtFile atFile;
+extern rtuModbus rtuModbus_default;
 
 gsModbus modbus_slave;
 gNbTCP nb_tcp;
@@ -111,7 +112,7 @@ gNbMQTT nb_mqtt;
 int timer6 = 0;
 
 #define MODEL_NAME_STR	"SCB111-485"
-#define SW_VERSION_STR	"v0.3.0"
+#define SW_VERSION_STR	"v0.5.0"
 mod_name_t mod_name_default = {MODEL_NAME_STR};
 software_ver sw_v_default = {SW_VERSION_STR};
 uint32_t g_restore_flag;
@@ -152,21 +153,24 @@ int main(void)
 	MX_USB_DEVICE_Init();
 	MX_TIM6_Init();
 	BoardInitMcu();
-	
+
 	MX_NB_Init();
 	MX_WoMaster_Init();
 	MX_MQTT_Init();
 	ATFileInit();
 	nbiotDetect();
+	// nbiot_poweroff_on();
+	// uploadMqttUpper();
+	
 	HAL_Delay(10);
-		
+	
 	gNbTCP *pNbTcp = &nb_tcp;
   /* USER CODE END SysInit */
 
   /* USER CODE BEGIN 2 */
 	int sslFileFlag = 0;
 	char stackBigBuffer[2048];
-	char sslBuf[8];	
+	char sslBuf[8];
 
 	memset(stackBigBuffer, 0 , sizeof(stackBigBuffer));
 	memset(sslBuf, 0, sizeof(sslBuf));
@@ -175,7 +179,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    /* USER CODE BEGIN 3 */		
+    /* USER CODE BEGIN 3 */
 		if (usbPlugFlag == PlugIn) {
 			if (usb_rcv_flag) {
 				if (usb_rcv_buff[0] == 0xaa && usb_rcv_buff[1] == 0xbb && usb_rcv_buff[2] == 0xcc) {
@@ -208,8 +212,8 @@ int main(void)
 			switch(nbiot_config.ulIotMode) {
 				case 0:
 					if (timer6) {
-						 nbiot_poweroff_on();
 						 ModbusRtuUnitSndAndRcv();
+						 nbiot_poweroff_on();
 						 ModbusRtuMqtt();
 						 nbiot_poweroff_on();
 						 timer6 = 0;
@@ -223,7 +227,6 @@ int main(void)
 						rs485Mqtt();
 						HAL_Delay(10);
 						nbiot_poweroff_on();
-
 						memset(rs485_uart_rcv_buffer, 0, sizeof(rs485_uart_rcv_buffer));
 						rs485_uart_rcv_len = 0;
 						irqNum_idle_uart = 0;
@@ -299,6 +302,8 @@ void usbModbusProcess()
 	if (g_uart_config_change == 1) {
 		g_uart_config_change = 0;
 		uartConfigure(gs_baudrate[uart_config.baudrate], uart_config.parity, uart_config.stopBits);
+	} else if (g_restore_flag == 1) {
+		BoardResetMcu();
 	}
 }
 
@@ -334,8 +339,14 @@ void MX_WoMaster_Init(void)
 	if (read_partition_init(PARTITION_MQTT, (char *)&mqtt_config, sizeof(mqtt_config_t)) < 0)
 		memcpy(&mqtt_config, &mqtt_config_default, sizeof(mqtt_config_t));
 
+	if (read_partition(PARTITION_UART, (char *)&uart_config, sizeof(uart_config_t)) < 0)
+		MX_USART2_UART_Init();
+	else
+		uartConfigure(gs_baudrate[uart_config.baudrate], uart_config.parity, uart_config.stopBits);
+
 	read_partition_modbus_rtu(PARTITION_MODBUS_RTU, (char *)(&g_sensorData.sensorConf), modbusContentLength, 0);
 	read_partition_modbus_rtu(PARTITION_MODBUS_RTU, (char *)(&g_sensorData.sensorConf) + modbusContentLength, modbusContentLength, modbusContentLength);
+	memset(&rtuModbus_default, 0, sizeof(rtuModbus));
 
 	HAL_Delay(100);
 
@@ -391,11 +402,11 @@ void MX_NB_Init(void)
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 	HAL_Delay(200);
-	
+
 	// HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 	// HAL_Delay(1500);
 	// HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-	
+
 	__HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
   __HAL_UART_ENABLE_IT(&huart1, UART_FLAG_RXNE);
 }
@@ -410,21 +421,30 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			count = 0;
 		else
 			count ++;
-		
+
 		if(count / (mqtt_config.ulInterval)) {
-			 timer6 = 1;
-			 count = 0;
+				if (!timer6) {
+				timer6 = 1;
+				count = 0;
+			}
 		}
-  }
+	}
 }
 
 void uartConfigure(uint32_t baudrate, uint32_t type, uint32_t stopbits)
 {
 	huart2.Instance = USART2;
   huart2.Init.BaudRate = baudrate;
-  huart2.Init.WordLength = type == 0 ? UART_WORDLENGTH_8B : UART_WORDLENGTH_9B;
+	huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = stopbits;
-  huart2.Init.Parity = UART_PARITY_NONE;
+
+	if (type == 1)
+		huart2.Init.Parity = UART_PARITY_EVEN;
+	else if (type == 2)
+		huart2.Init.Parity = UART_PARITY_ODD;
+	else
+		huart2.Init.Parity = UART_PARITY_NONE;
+	
   huart2.Init.Mode = UART_MODE_TX_RX;
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart2.Init.OverSampling = UART_OVERSAMPLING_16;

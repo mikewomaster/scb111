@@ -5,6 +5,7 @@
 #include "function.h"
 #include "modbus_rtu_sensor.h"
 #include "upload_method.h"
+#include "param.h"
 #include "main.h"
 #include "nb_tcp.h"
 
@@ -18,10 +19,14 @@ extern uint16_t irqNum_idle_uart;
 extern char rs485_uart_rcv_buffer[256];
 extern uint16_t rs485_uart_rcv_len;
 
+extern mqtt_config_t mqtt_config;
+
 sensorData g_sensorData;
 uint8_t ModbusRtuSendFlag = 0;
 uint8_t ModbusRtuSeq = 0;
 uint8_t ModbusRtuValueFlag = 0;
+
+static int modbusRtuGetFlag;
 
 void ModbusRtuMqtt()
 {
@@ -45,6 +50,7 @@ void ModbusRtuMqtt()
 			buf[len] = '}';
 			// FIX ME: upload method
 		  uploadMQTT(buf);
+			// uploadMQTTDowner(buf);
 		} else
 			return;
 
@@ -58,16 +64,20 @@ static void ModbusRtuRcv()
 	{
 			if (rs485_uart_rcv_buffer[1] == 0x03) {
 				g_sensorData.value[ModbusRtuSeq] =  rs485_uart_rcv_buffer[3];
-				g_sensorData.value[ModbusRtuSeq] =  (g_sensorData.value[ModbusRtuSeq] << 8)+ rs485_uart_rcv_buffer[4];
+				g_sensorData.value[ModbusRtuSeq] =  (g_sensorData.value[ModbusRtuSeq] << 8) + rs485_uart_rcv_buffer[4];
+				modbusRtuGetFlag = 1;
 			}
-			else
+			else {
 				g_sensorData.value[ModbusRtuSeq] =  -1;
-
+				modbusRtuGetFlag = 0;
+			}
+				
 			rs485_uart_rcv_len = 0;
 			irqNum_idle_uart = 0;
 			memset(rs485_uart_rcv_buffer, 0, sizeof(rs485_uart_rcv_buffer));
 	} else {
 		g_sensorData.value[ModbusRtuSeq] =  -1;
+		modbusRtuGetFlag = 0;
 	}
 }
 
@@ -90,7 +100,7 @@ void ModbusRtuUnitSndAndRcv()
 		sensorRead[0] = g_sensorData.sensorConf.rtuModbusTable[i].addr;
 		sensorRead[1] = 0x03;
 		sensorRead[2] = 0x00;
-		sensorRead[3] = g_sensorData.sensorConf.rtuModbusTable[i].reg;
+		sensorRead[3] = g_sensorData.sensorConf.rtuModbusTable[i].reg - 1;
 		sensorRead[4] = 0x00;
 		sensorRead[5] = 0x01;
 		unsigned short res = crc_Compute(sensorRead, 6);
@@ -98,12 +108,18 @@ void ModbusRtuUnitSndAndRcv()
 		sensorRead[7] = res >> 8;
 
 		ModbusRtuSeq = i;
-		for(int j = 0; j < 2; j++) {
+		for(int j = 0; j < 3; j++) {
+			if (modbusRtuGetFlag) {
+				modbusRtuGetFlag = 0;
+				break;
+			}
+
 			ModbusRtuSend(sensorRead);
-			HAL_Delay(100);
+			// HAL_Delay(100);
+			HAL_Delay(mqtt_config.szRtuTimeout);
 			ModbusRtuRcv();
 		}
-		HAL_Delay(2000);
+		HAL_Delay(1000);
 	}
 		ModbusRtuValueFlag = 1;
 }

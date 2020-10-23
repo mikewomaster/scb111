@@ -346,17 +346,22 @@ int nbiot_init(void)
 	// nbiot_checkSIMStatus();
 	// nbiot_checkNetStatus();
 	retry_count = 0;
+
+	// FIX ME: Close Serial Port Transmit
 	do {
 		 DelayMs(2000);
 		 PS_attach = nbiot_checkAttachStatus();
 		 retry_count ++;
-	} while( PS_attach!=1 && retry_count<1000);
-	
-	if (retry_count == 1000)
+	} while( PS_attach!=1 && retry_count<100);
+
+	if (retry_count == 100)
 		BoardResetMcu();
 
-	nbiot_checkNetworkInfo(); 
+	HAL_Delay(10);
+	nbiot_checkNetworkInfo();
+	HAL_Delay(10);
 	nbiot_activeNetwork();
+	HAL_Delay(10);
 	nbiot_checkIsActive();
 }
 
@@ -449,7 +454,7 @@ void nbiot_activeNetwork(void)
 
 	memset(cmd,'\0',sizeof(cmd));
 	strcpy(cmd,"AT+CNACT=0,1");
-	cmdRet = Send_AT_Command(cmd,"OK",CMD_TIMEOUT, 2000);
+	cmdRet = Send_AT_Command(cmd,"ACTIVE",CMD_TIMEOUT, 2000);
 	if(cmdRet == 1 && g_nbiot_rx_len > 0)
 	{
 		memset(szBuf,'\0',sizeof(szBuf));

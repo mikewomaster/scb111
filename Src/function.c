@@ -8,7 +8,7 @@
 // extern UART_HandleTypeDef hlpuart1;
 extern UART_HandleTypeDef huart2;
 
-#define __DEBUG__
+// #define __DEBUG__
 #define UART2DEBUG 1
 
 void  DebugPrintf(char  *p_fmt, ...)

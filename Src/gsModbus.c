@@ -5,7 +5,7 @@
 #include "modbus_handle.h"
 #include "param_init.h"
 
-unsigned int gs_baudrate[10] = {9600, 300,1200,2400,4800,9600,19200,38400,57600,115200};
+unsigned int gs_baudrate[10] = {9600, 4800, 2400, 1200};
 
 extern Param_Config_t param_config_tbl[];
 	
