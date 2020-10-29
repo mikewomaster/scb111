@@ -435,7 +435,7 @@ void uartConfigure(uint32_t baudrate, uint32_t type, uint32_t stopbits)
 {
 	huart2.Instance = USART2;
   huart2.Init.BaudRate = baudrate;
-	huart2.Init.WordLength = UART_WORDLENGTH_8B;
+	huart2.Init.WordLength = (type == 1) ? UART_WORDLENGTH_8B : UART_WORDLENGTH_9B;
   huart2.Init.StopBits = stopbits;
 
 	if (type == 1)
