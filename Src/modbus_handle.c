@@ -22,7 +22,7 @@ extern uint32_t g_uart_config_change;
 uart_config_t uart_config_default = {0, 8, 1, 0, 1};
 uart_config_t uart_config;
 
-__align(4) nbiot_config_t nbiot_config_default={"internet", "", "", 0};
+__align(4) nbiot_config_t nbiot_config_default={"", "", "", 0};
 nbiot_config_t nbiot_config;
 uint8_t b_nbiot_Config_Changed = 0;
 

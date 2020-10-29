@@ -175,6 +175,9 @@ void mqttPubHandle(uint8_t* msg, uint16_t len)
 	// Send_AT_Command_2(at.cmd, ">", 10000, 7000, 5000, msg);
 }
 
+extern uint32_t g_nbiot_rx_len;
+extern char g_nbiot_RxBuffer[512];
+
 void mqttCheckAPN()
 {
 	int cmdRet = 0;
@@ -184,6 +187,18 @@ void mqttCheckAPN()
 	
 	at.type = readAT;
 	mqttATSend(at, "OK");
+	
+	if(g_nbiot_rx_len > 0)
+	{
+		int  activeID;
+		char apnBuffer[32];
+
+		int item = sscanf(g_nbiot_RxBuffer,"+CGNAPN: %d, 1,\"%s\"", &activeID, apnBuffer);
+		if(item > 0)
+			strcpy(nbiot_config.szAPN, apnBuffer);
+
+		DebugPrintf("TestAPN:%s\r\n", nbiot_config.szAPN);
+	}
 }
 
 void mqttNetworkConfigHandle()
@@ -196,7 +211,7 @@ void mqttNetworkConfigHandle()
 	AtCommand at;
 	at_command_parament(&at, "CNCFG");
 
-	sprintf(buf, "%d, %d,\"%s\",\"%s\",\"%s\", 0", 0, 1, nbiot_config.szAPN, nbiot_config.szUserName, nbiot_config.szUserPassword);
+	sprintf(buf, "%d,%d,%s,\"%s\",\"%s\", 0", 0, 0, nbiot_config.szAPN, nbiot_config.szUserName, nbiot_config.szUserPassword);
 
 	at_command_content(&at, buf);
 	at.type = writeAT;
@@ -224,6 +239,14 @@ static void mqttCheckOperator()
 	mqttATSend(at, "OK");
 }
 
+static void mqttCheckSoftware()
+{
+	AtCommand at;
+	at_command_parament(&at, "SIMCOMATI"); // SIMCOMATI
+	at.type = Default;
+	mqttATSend(at, "OK");
+}
+
 void mqttSetService()
 {
 	int cmdRet = 0;
@@ -239,7 +262,7 @@ void mqttSetService()
 
 	memset(buf, 0, sizeof(buf));
 	at_command_parament(&at, "CMNB");
-	sprintf(buf, "%d", 1);
+	sprintf(buf, "%d", 2);
 	at_command_content(&at, buf);
 	at.type = writeAT;
 	mqttATSend(at, "OK");
@@ -249,13 +272,15 @@ void mqttOpenHandle(void)
 {
 	// HAL_UART_DeInit(&huart2);
 	// mqttSetService();
+	// HAL_Delay(20);
 	mqttNetworkConfigHandle();
 	HAL_Delay(20);
 	nbiot_init();
-	mqttCheckAPN();
-	mqttCheckOperator();
+	// mqttCheckAPN();
+	// HAL_Delay(100);
+	// mqttCheckSoftware();
 	HAL_Delay(100);
-		// uartConfigure(gs_baudrate[uart_config.baudrate], uart_config.parity, uart_config.stopBits);
+	// uartConfigure(gs_baudrate[uart_config.baudrate], uart_config.parity, uart_config.stopBits);
 }
 
 void mqttConnectHandle (void)

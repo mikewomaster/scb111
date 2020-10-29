@@ -1,6 +1,6 @@
 Dependencies for Project 'SCB111_NB', Target 'SCB111_NB': (DO NOT MODIFY !)
 F (startup_stm32l072xx.s)(0x5F164F43)(--cpu Cortex-M0+ -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include--pd "__UVISION_VERSION SETA 525" --pd "_RTE_ SETA 1" --pd "STM32L072xx SETA 1"--list startup_stm32l072xx.lst --xref -o scb111_nb\startup_stm32l072xx.o --depend scb111_nb\startup_stm32l072xx.d)
-F (..\Src\function.c)(0x5F924A75)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\function.o --omf_browse scb111_nb\function.crf --depend scb111_nb\function.d)
+F (..\Src\function.c)(0x5F978689)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\function.o --omf_browse scb111_nb\function.crf --depend scb111_nb\function.d)
 I (../Inc/function.h)(0x5F3B8126)
 I (E:\keli\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
 I (E:\keli\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
@@ -43,7 +43,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_usart_ex.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usb.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd_ex.h)(0x5F164F3D)
-F (../Src/main.c)(0x5F928B7A)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\main.o --omf_browse scb111_nb\main.crf --depend scb111_nb\main.d)
+F (../Src/main.c)(0x5F9935AD)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\main.o --omf_browse scb111_nb\main.crf --depend scb111_nb\main.d)
 I (../Inc/main.h)(0x5F868EC5)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5F164F3C)
 I (../Inc/stm32l0xx_hal_conf.h)(0x5F27AC1A)
@@ -90,7 +90,7 @@ I (../Inc/usbd_conf.h)(0x5F164F3F)
 I (E:\keli\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (E:\keli\ARM\ARMCC\include\stdlib.h)(0x599ECD2C)
 I (E:\keli\ARM\ARMCC\include\string.h)(0x599ECD2C)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (..\Src\system\gpio.h)(0x5F164F45)
 I (..\Src\board\pinName-board.h)(0x5F164F44)
 I (..\Src\board\pinName-ioe.h)(0x5F164F44)
@@ -251,7 +251,7 @@ I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x5F164F43)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x5F164F43)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x5F164F43)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h)(0x5F164F43)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 F (../Src/usbd_desc.c)(0x5F164F45)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\usbd_desc.o --omf_browse scb111_nb\usbd_desc.crf --depend scb111_nb\usbd_desc.d)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x5F164F43)
 I (../Inc/usbd_conf.h)(0x5F164F3F)
@@ -478,7 +478,7 @@ F (..\Src\remove_unused.c)(0x5F728F5E)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g
 F (..\Src\param_init.c)(0x5F880801)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\param_init.o --omf_browse scb111_nb\param_init.crf --depend scb111_nb\param_init.d)
 I (../Inc/param_init.h)(0x5F880821)
 I (E:\keli\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l072xx.h)(0x5F164F37)
 I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x5F164F3A)
 I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x5F164F3A)
@@ -525,8 +525,8 @@ I (E:\keli\ARM\ARMCC\include\stdbool.h)(0x599ECD2E)
 I (E:\keli\ARM\ARMCC\include\string.h)(0x599ECD2C)
 I (../Inc/modbus_handle.h)(0x5F8808A1)
 I (../Inc/param_init.h)(0x5F880821)
-I (../Inc/param.h)(0x5F914968)
-F (..\Src\modbus_handle.c)(0x5F9289B6)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\modbus_handle.o --omf_browse scb111_nb\modbus_handle.crf --depend scb111_nb\modbus_handle.d)
+I (../Inc/param.h)(0x5F97BC1A)
+F (..\Src\modbus_handle.c)(0x5F97BC15)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\modbus_handle.o --omf_browse scb111_nb\modbus_handle.crf --depend scb111_nb\modbus_handle.d)
 I (..\Src\system\delay.h)(0x5F164F45)
 I (E:\keli\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
 I (../Inc/usbd_cdc_if.h)(0x5F164F3F)
@@ -579,7 +579,7 @@ I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x5F164F43)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x5F164F43)
 I (../Inc/function.h)(0x5F3B8126)
 I (../Inc/param_init.h)(0x5F880821)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (../Inc/modbus_handle.h)(0x5F8808A1)
 I (../Inc/modbus_rtu.h)(0x5F90F9DA)
 I (../Inc/modbus_rtu_sensor.h)(0x5F718EE0)
@@ -675,7 +675,7 @@ I (E:\keli\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
 I (E:\keli\ARM\ARMCC\include\string.h)(0x599ECD2C)
 I (E:\keli\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (../Inc/at_command.h)(0x5F8407AA)
-F (..\Src\nb_mqtt.c)(0x5F9236DD)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\nb_mqtt.o --omf_browse scb111_nb\nb_mqtt.crf --depend scb111_nb\nb_mqtt.d)
+F (..\Src\nb_mqtt.c)(0x5F990BED)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\nb_mqtt.o --omf_browse scb111_nb\nb_mqtt.crf --depend scb111_nb\nb_mqtt.d)
 I (../Inc/at_command.h)(0x5F8407AA)
 I (../Inc/nb_mqtt.h)(0x5F5719CC)
 I (E:\keli\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
@@ -719,10 +719,10 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usb.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd_ex.h)(0x5F164F3D)
 I (E:\keli\ARM\ARMCC\include\time.h)(0x599ECD2E)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (E:\keli\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (E:\keli\ARM\ARMCC\include\string.h)(0x599ECD2C)
-F (..\Src\modbus_rtu.c)(0x5F927F9E)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\modbus_rtu.o --omf_browse scb111_nb\modbus_rtu.crf --depend scb111_nb\modbus_rtu.d)
+F (..\Src\modbus_rtu.c)(0x5F990BDB)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\modbus_rtu.o --omf_browse scb111_nb\modbus_rtu.crf --depend scb111_nb\modbus_rtu.d)
 I (E:\keli\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
 I (E:\keli\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (E:\keli\ARM\ARMCC\include\string.h)(0x599ECD2C)
@@ -730,7 +730,7 @@ I (../Inc/function.h)(0x5F3B8126)
 I (../Inc/modbus_rtu_sensor.h)(0x5F718EE0)
 I (../Inc/modbus_rtu.h)(0x5F90F9DA)
 I (../Inc/upload_method.h)(0x5F718F36)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (../Inc/main.h)(0x5F868EC5)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5F164F3C)
 I (../Inc/stm32l0xx_hal_conf.h)(0x5F27AC1A)
@@ -773,7 +773,7 @@ I (../Inc/nb_tcp.h)(0x5F34F894)
 F (..\Src\upload_method.c)(0x5F9283C2)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\upload_method.o --omf_browse scb111_nb\upload_method.crf --depend scb111_nb\upload_method.d)
 I (../Inc/nb_mqtt.h)(0x5F5719CC)
 I (E:\keli\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (..\Src\nbiot\nbiot.h)(0x5F571BAA)
 I (../Inc/main.h)(0x5F868EC5)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5F164F3C)
@@ -860,7 +860,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usb.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd_ex.h)(0x5F164F3D)
 I (E:\keli\ARM\ARMCC\include\time.h)(0x599ECD2E)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (../Inc/at_ssl.h)(0x5F83FC6A)
 I (E:\keli\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (E:\keli\ARM\ARMCC\include\string.h)(0x599ECD2C)
@@ -906,7 +906,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usb.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd_ex.h)(0x5F164F3D)
 I (E:\keli\ARM\ARMCC\include\time.h)(0x599ECD2E)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (../Inc/at_ssl.h)(0x5F83FC6A)
 I (../Inc/at_file.h)(0x5F866712)
 I (../Inc/at_command.h)(0x5F8407AA)
@@ -2041,7 +2041,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usb.h)(0x5F164F3D)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd_ex.h)(0x5F164F3D)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x5F164F43)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x5F164F43)
-F (..\Src\nbiot\nbiot.c)(0x5F900571)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\nbiot.o --omf_browse scb111_nb\nbiot.crf --depend scb111_nb\nbiot.d)
+F (..\Src\nbiot\nbiot.c)(0x5F98E64F)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\nbiot.o --omf_browse scb111_nb\nbiot.crf --depend scb111_nb\nbiot.d)
 I (..\Src\nbiot\nbiot.h)(0x5F571BAA)
 I (../Inc/main.h)(0x5F868EC5)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5F164F3C)
@@ -2087,7 +2087,7 @@ I (E:\keli\ARM\ARMCC\include\string.h)(0x599ECD2C)
 I (E:\keli\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
 I (../Inc/function.h)(0x5F3B8126)
 I (..\Src\system\delay.h)(0x5F164F45)
-I (../Inc/param.h)(0x5F914968)
+I (../Inc/param.h)(0x5F97BC1A)
 I (../Inc/at_command.h)(0x5F8407AA)
 F (..\Src\system\delay.c)(0x5F164F45)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ..\Src\nbiot -I ..\Src\system -I ..\Src\board-I.\RTE\_SCB111_NB-IE:\keli\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-IE:\keli\ARM\PACK\Keil\STM32L0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L072xx -DUSE_HAL_DRIVER -DSTM32L072xx-o scb111_nb\delay.o --omf_browse scb111_nb\delay.crf --depend scb111_nb\delay.d)
 I (..\Src\board\delay-board.h)(0x5F164F44)

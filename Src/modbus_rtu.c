@@ -108,6 +108,8 @@ void ModbusRtuUnitSndAndRcv()
 		sensorRead[7] = res >> 8;
 
 		ModbusRtuSeq = i;
+		HAL_Delay(30);
+
 		for(int j = 0; j < 3; j++) {
 			if (modbusRtuGetFlag) {
 				modbusRtuGetFlag = 0;

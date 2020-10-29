@@ -444,7 +444,7 @@ void uartConfigure(uint32_t baudrate, uint32_t type, uint32_t stopbits)
 		huart2.Init.Parity = UART_PARITY_ODD;
 	else
 		huart2.Init.Parity = UART_PARITY_NONE;
-	
+
   huart2.Init.Mode = UART_MODE_TX_RX;
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart2.Init.OverSampling = UART_OVERSAMPLING_16;

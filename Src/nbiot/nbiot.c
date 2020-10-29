@@ -341,7 +341,7 @@ int nbiot_init(void)
 			DelayMs(1000);
 			retry_count++;
 		}
-	}while(retry_count <= 10);
+	} while(retry_count <= 10);
 	
 	// nbiot_checkSIMStatus();
 	// nbiot_checkNetStatus();
@@ -480,13 +480,16 @@ void nbiot_checkIsActive(void)
 		memset(szIpaddr,'\0',16);
 		int activeID = 0;
 		item = sscanf(g_nbiot_RxBuffer,"+CNACT: %d,1,%s", &activeID, szIpaddr);
-		
+
 		if(item > 0)
 		{
 			if (strlen(szIpaddr))
 				nbiot_status = CEL_CONNECTED;
+			else
+				nbiot_status = CEL_DISCONNECTED;
+		} else {
+					nbiot_status = CEL_DISCONNECTED;
 		}
-
 	}
 	return;
 }
@@ -509,16 +512,24 @@ void nbiot_checkNetworkInfo(void)
 		{
 		}
 	}
-	
+
 	memset(cmd,'\0',sizeof(cmd));
 	strcpy(cmd,"AT+CGNAPN");
 	cmdRet = Send_AT_Command(cmd,"OK",CMD_TIMEOUT, 2000);
 	if(cmdRet == 1 && g_nbiot_rx_len > 0)
 	{
 		memset(szBuf,'\0',sizeof(szBuf));
-		item = sscanf(g_nbiot_RxBuffer,"+CGNAPN: %s",szBuf);
-		if(item > 0)
+		int nbId;
+		item = sscanf(g_nbiot_RxBuffer,"+CGNAPN: %d,%s", &nbId, szBuf);
+		if (item > 0)
 		{
+			int szBufLen = strlen(szBuf);
+			
+			// CHECK ME
+			// memset(nbiot_config.szAPN, 0, sizeof(nbiot_config.szAPN));
+			// strcpy(nbiot_config.szAPN, szBuf);
+
+			DebugPrintf("nbiot_config.szAPN::::%d, %s\r\n",szBufLen, nbiot_config.szAPN);
 		}
 	}
 	return;
@@ -605,7 +616,7 @@ void nbiot_disconnect(void)
 	strcpy(cmd,"AT+QIDEACT");
 	cmdRet = Send_AT_Command(cmd,"OK",2000,2000);
 	
-	nbiot_status = CEL_DISCONNECTED;
+	// nbiot_status = CEL_DISCONNECTED;
 }
 
 void nbiot_updateSettings(void)
