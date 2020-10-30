@@ -131,6 +131,11 @@ typedef struct {
 	uint16_t  szRtuTimeout;
 } mqtt_config_t;
 
+typedef struct {
+	uint8_t		szServer[32];
+	uint16_t	ulPort;
+}tcp_config_t;
+
 typedef struct _mbus_md_device_cfg 
 {
 	uint8_t addr_and_mode[2];

@@ -22,7 +22,7 @@ extern uint32_t g_uart_config_change;
 uart_config_t uart_config_default = {0, 8, 1, 0, 1};
 uart_config_t uart_config;
 
-__align(4) nbiot_config_t nbiot_config_default={"", "", "", 0};
+__align(4) nbiot_config_t nbiot_config_default={"internet", "", "", 0};
 nbiot_config_t nbiot_config;
 uint8_t b_nbiot_Config_Changed = 0;
 
@@ -30,6 +30,9 @@ uint8_t b_nbiot_Config_Changed = 0;
 __align(4) mqtt_config_t mqtt_config_default={"", 1883, "", "", 60, "", "", 100};
 mqtt_config_t mqtt_config;
 uint8_t b_mqtt_Config_Changed = 0;
+
+__align(4) tcp_config_t tcp_config_default = {"", 80};
+tcp_config_t tcp_config;
 
 __align(4) userinfo user_info_default = {{'a','d','m','i','n',0},{'a','d','m','i','n',0}};
 __align(4) rtuModbus rtuModbus_default;
@@ -144,6 +147,8 @@ uint8_t Write_Param(uint16_t *data, uint16_t offset, uint16_t num, uint16_t part
 			return -1;
 		if( 0 != write_partition(PARTITION_MODBUS_RTU, (char *)&rtuModbus_default, sizeof(rtuModbus)))
 			return -1;
+		if( 0 != write_partition(PARTITION_TCP, (char *)&tcp_config_default, sizeof(tcp_config_t)))
+			return -1;
 
 		g_restore_flag = 1;
 		return 0;
@@ -206,6 +211,38 @@ int nbiot_write_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_
 				b_nbiot_Config_Changed = 1;
 		}
 	}
+
+	return res;
+}
+
+int tcp_write_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n)
+{
+	char tmp[200];
+	uint8_t res;
+	uint8_t* p = (uint8_t*)data;
+	char *p_tcp = (char *)&tcp_config;
+	if(data == NULL || num <= 0)
+		return -1;
+
+	memset(tmp, '\0', sizeof(tmp));
+	memcpy(tmp, (uint8_t*)&tcp_config, sizeof(tcp_config_t));
+	memset(&tmp[offset], '\0', num);
+
+	switch(offset)
+	{
+		case 0:
+			memset(&tmp[offset], '\0', 32);
+			set_value_str(p, num, &tmp[offset]);
+			break;
+
+		case 32:
+			set_value_uint16(p, num, &tmp[offset]);	
+			break;
+	}
+
+	res = write_partition(part_n, tmp, sizeof(tcp_config_t));
+	if( res == 0 )
+		memcpy((uint8_t*)&tcp_config, tmp, sizeof(tcp_config_t));
 
 	return res;
 }
@@ -308,6 +345,10 @@ uint8_t Do_W_HOLD_REG_Function(uint16_t addr, uint16_t *data, uint16_t num, uint
 	if ((addr >= MODBUSRTU_VALUE_START) && (addr <= MODBUSRTU_VALUE_END))
 	{
 		return modbus_rtu_write_cfg(data, (addr-MODBUSRTU_VALUE_START)*2, (uint16_t)num, n);
+	}
+	else if((addr >= TCP_VALUE_START) && (addr <= TCP_VALUE_END))
+	{
+		return tcp_write_cfg(data, (addr-TCP_VALUE_START)*2, (uint16_t)num, n);
 	}
 	else if((addr >= NBIOT_VALUE_START) && (addr <= NBIOT_VALUE_END))
 	{
@@ -418,6 +459,45 @@ int nbiot_read_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n
 	return ret;
 }
 
+int tcp_read_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n)
+{
+	uint8_t *pcfg;
+	uint8_t *p = (uint8_t *)data;
+	char tmp[200]={'\0'};
+	int ret = -1;
+
+	pcfg = (uint8_t *)&tcp_config;
+	if (read_partition(part_n, tmp, sizeof(tcp_config_t)) < 0)
+	{
+		switch(offset)
+		{
+			case 0:
+				ret = get_value_str((char *)pcfg+offset, num, p);
+				break;
+			
+			case 32:
+				memcpy(p, (pcfg+offset), num);
+				ret = 1;
+				break;
+		}
+	}
+	else
+	{
+		switch(offset)
+		{
+			case 0:
+				ret = get_value_str(tmp+offset, num, p);
+				break;
+			case 32:
+				memcpy(p, (tmp+offset), num);
+				ret = 1;
+				break;
+		 }
+	}
+
+	return ret;
+}
+
 int mqtt_read_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n)
 {
 	uint8_t *pcfg;
@@ -507,6 +587,10 @@ void Do_R_HOLD_REG_Function(unsigned short addr, unsigned short* data, uint16_t 
 	if ((addr >= MODBUSRTU_VALUE_START) && (addr <= MODBUSRTU_VALUE_END))
 	{
 		modbus_rtu_read_cfg(data, (addr-MODBUSRTU_VALUE_START)*2, (uint16_t)num, n);
+	}
+	else if((addr >= TCP_VALUE_START) && (addr <= TCP_VALUE_END))
+	{
+		tcp_read_cfg(data, (addr-TCP_VALUE_START)*2, (uint16_t)num, n);
 	}
 	else if (addr >= SSL_VALUE_START && addr <= SSL_VALUE_END)
 	{

@@ -25,6 +25,10 @@ uint8_t Modbus_Frame_Check(uint8_t func, uint16_t addr, uint16_t *data, uint16_t
 	{
 		return PARTITION_SSL;
 	}
+	else if ((addr >= TCP_VALUE_START) && (addr <= TCP_VALUE_END))
+	{
+		return PARTITION_TCP;
+	}
 	else if(addr < 1000)
 	{
 		for(i = 0; i < 10; i++)

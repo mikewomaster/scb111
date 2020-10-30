@@ -48,8 +48,9 @@ typedef enum  {
 #define PARTITION_NBIOT					PARTITION_10
 #define PARTITION_MQTT					PARTITION_11
 #define PARTITION_SSL						PARTITION_12
-#define PARTITION_COAP					PARTITION_13
-#define PARTITION_DLMS					PARTITION_14
+#define PARTITION_TCP						PARTITION_13
+#define PARTITION_COAP					PARTITION_14
+#define PARTITION_DLMS					PARTITION_15
 
 #define p_log(...)    // e_printf("part:"##__VA_ARGS__)
 

@@ -27,34 +27,6 @@ Project File Date:  10/13/2020
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\keli\ARM\ARMCC\Bin'
 Build target 'SCB111_NB'
-compiling modbus_rtu.c...
-../Inc/modbus_rtu_sensor.h(10): warning:  #1295-D: Deprecated declaration ModbusRtuMqtt - give arg types
-  void ModbusRtuMqtt();
-../Inc/modbus_rtu_sensor.h(11): warning:  #1295-D: Deprecated declaration ModbusRtuRcv - give arg types
-  void ModbusRtuRcv();
-../Inc/modbus_rtu_sensor.h(12): warning:  #1295-D: Deprecated declaration ModbusRtuUnitSndAndRcv - give arg types
-  void ModbusRtuUnitSndAndRcv();
-../Inc/modbus_rtu_sensor.h(19): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Inc/upload_method.h(5): warning:  #1295-D: Deprecated declaration tcpRcvAndSnd - give arg types
-  void tcpRcvAndSnd();
-../Inc/upload_method.h(6): warning:  #1295-D: Deprecated declaration rs485Mqtt - give arg types
-  void rs485Mqtt();
-../Inc/upload_method.h(8): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
-  void usbModbusProcess();
-../Inc/main.h(48): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
-  static void nbiotDetect();
-../Inc/nb_tcp.h(32): warning:  #1295-D: Deprecated declaration TCPReceiveHandle - give arg types
-  void TCPReceiveHandle();
-../Inc/nb_tcp.h(33): warning:  #1295-D: Deprecated declaration TCPCloseHandle - give arg types
-  void TCPCloseHandle();
-../Inc/nb_tcp.h(34): warning:  #1295-D: Deprecated declaration TCPDisConnectHandle - give arg types
-  void TCPDisConnectHandle();
-..\Src\modbus_rtu.c(149): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
-  			HAL_UART_Transmit(&huart2, nb_tcp_rcv, strlen(nb_tcp_rcv), 10000);
-..\Src\modbus_rtu.c: 13 warnings, 0 errors
 compiling nb_mqtt.c...
 ../Inc/nb_mqtt.h(55): warning:  #1295-D: Deprecated declaration mqttSubHandle - give arg types
   void mqttSubHandle ();
@@ -88,87 +60,37 @@ compiling nb_mqtt.c...
   		DebugPrintf("TestAPN:%s\r\n", nbiot_config.szAPN);
 ..\Src\nb_mqtt.c(183): warning:  #177-D: variable "cmdRet"  was declared but never referenced
   	int cmdRet = 0;
+..\Src\nb_mqtt.c(212): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
+  	if (!strlen(nbiot_config.szAPN))
+..\Src\nb_mqtt.c(213): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *restrict"
+  		strcpy(nbiot_config.szAPN, "internet");
 ..\Src\nb_mqtt.c(206): warning:  #177-D: variable "cmd"  was declared but never referenced
   	char cmd[64] = {0};
 ..\Src\nb_mqtt.c(207): warning:  #177-D: variable "cmdRet"  was declared but never referenced
   	int cmdRet;
 ..\Src\nb_mqtt.c(208): warning:  #177-D: variable "retry_count"  was declared but never referenced
   	int retry_count = 0;
-..\Src\nb_mqtt.c(224): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+..\Src\nb_mqtt.c(228): warning:  #177-D: variable "cmdRet"  was declared but never referenced
   	int cmdRet = 0;
-..\Src\nb_mqtt.c(252): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+..\Src\nb_mqtt.c(256): warning:  #177-D: variable "cmdRet"  was declared but never referenced
   	int cmdRet = 0;
-..\Src\nb_mqtt.c(305): warning:  #223-D: function "DelayMs" declared implicitly
+..\Src\nb_mqtt.c(311): warning:  #223-D: function "DelayMs" declared implicitly
   			DelayMs(1000);
-..\Src\nb_mqtt.c(319): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+..\Src\nb_mqtt.c(325): warning:  #177-D: variable "cmdRet"  was declared but never referenced
   	int cmdRet = 0;
-..\Src\nb_mqtt.c(331): warning:  #177-D: variable "cmdRet"  was declared but never referenced
+..\Src\nb_mqtt.c(337): warning:  #177-D: variable "cmdRet"  was declared but never referenced
     int cmdRet = 0;
-..\Src\nb_mqtt.c(345): warning:  #940-D: missing return statement at end of non-void function "mqttCheckStatusHandle" 
+..\Src\nb_mqtt.c(351): warning:  #940-D: missing return statement at end of non-void function "mqttCheckStatusHandle" 
   }
-..\Src\nb_mqtt.c(234): warning:  #177-D: function "mqttCheckOperator"  was declared but never referenced
+..\Src\nb_mqtt.c(238): warning:  #177-D: function "mqttCheckOperator"  was declared but never referenced
   static void mqttCheckOperator()
-..\Src\nb_mqtt.c(242): warning:  #177-D: function "mqttCheckSoftware"  was declared but never referenced
+..\Src\nb_mqtt.c(246): warning:  #177-D: function "mqttCheckSoftware"  was declared but never referenced
   static void mqttCheckSoftware()
-..\Src\nb_mqtt.c: 27 warnings, 0 errors
-compiling main.c...
-../Inc/main.h(46): warning:  #1295-D: Deprecated declaration usbModbusProcess - give arg types
-  void usbModbusProcess();
-../Inc/main.h(48): warning:  #1295-D: Deprecated declaration nbiotDetect - give arg types
-  static void nbiotDetect();
-..\Src\nbiot\nbiot.h(69): warning:  #1295-D: Deprecated declaration nbiot_poweroff_on - give arg types
-  void nbiot_poweroff_on();
-../Inc/modbus_handle.h(22): warning:  #1-D: last line of file ends without a newline
-  void Do_R_HOLD_REG_Function(unsigned short addr, unsigned short* data, uint16_t num, uint8_t n);
-../Inc/nb_tcp.h(32): warning:  #1295-D: Deprecated declaration TCPReceiveHandle - give arg types
-  void TCPReceiveHandle();
-../Inc/nb_tcp.h(33): warning:  #1295-D: Deprecated declaration TCPCloseHandle - give arg types
-  void TCPCloseHandle();
-../Inc/nb_tcp.h(34): warning:  #1295-D: Deprecated declaration TCPDisConnectHandle - give arg types
-  void TCPDisConnectHandle();
-../Inc/tim.h(65): warning:  #1-D: last line of file ends without a newline
-  /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-../Inc/nb_mqtt.h(55): warning:  #1295-D: Deprecated declaration mqttSubHandle - give arg types
-  void mqttSubHandle ();
-../Inc/nb_mqtt.h(56): warning:  #1295-D: Deprecated declaration mqttCloseHandle - give arg types
-  void mqttCloseHandle ();
-../Inc/nb_mqtt.h(57): warning:  #1295-D: Deprecated declaration mqttDisconnectHandle - give arg types
-  void mqttDisconnectHandle ();
-../Inc/modbus_rtu_sensor.h(10): warning:  #1295-D: Deprecated declaration ModbusRtuMqtt - give arg types
-  void ModbusRtuMqtt();
-../Inc/modbus_rtu_sensor.h(11): warning:  #1295-D: Deprecated declaration ModbusRtuRcv - give arg types
-  void ModbusRtuRcv();
-../Inc/modbus_rtu_sensor.h(12): warning:  #1295-D: Deprecated declaration ModbusRtuUnitSndAndRcv - give arg types
-  void ModbusRtuUnitSndAndRcv();
-../Inc/modbus_rtu_sensor.h(19): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Inc/upload_method.h(5): warning:  #1295-D: Deprecated declaration tcpRcvAndSnd - give arg types
-  void tcpRcvAndSnd();
-../Inc/upload_method.h(6): warning:  #1295-D: Deprecated declaration rs485Mqtt - give arg types
-  void rs485Mqtt();
-../Inc/upload_method.h(8): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Inc/at_ssl.h(49): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Inc/at_file.h(23): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Src/main.c(160): warning:  #223-D: function "ATFileInit" declared implicitly
-  	ATFileInit();
-../Src/main.c(186): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *restrict"
-  						strcat(stackBigBuffer, usb_rcv_buff + 4);
-../Src/main.c(191): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *"
-  						if(strstr(usb_rcv_buff, "endwowow") == NULL) {
-../Src/main.c(192): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *restrict"
-  							strcat(stackBigBuffer, usb_rcv_buff);
-../Src/main.c(197): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "const char *restrict"
-  							strcat(stackBigBuffer, usb_rcv_buff);
-../Src/main.c(167): warning:  #177-D: variable "pNbTcp"  was declared but never referenced
-  	gNbTCP *pNbTcp = &nb_tcp;
-../Src/main.c: 26 warnings, 0 errors
+..\Src\nb_mqtt.c: 29 warnings, 0 errors
 linking...
-Program Size: Code=46584 RO-data=520 RW-data=848 ZI-data=14128  
+Program Size: Code=47060 RO-data=528 RW-data=952 ZI-data=14096  
 FromELF: creating hex file...
-"SCB111_NB\SCB111_NB.axf" - 0 Error(s), 66 Warning(s).
+"SCB111_NB\SCB111_NB.axf" - 0 Error(s), 29 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -191,7 +113,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.1
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

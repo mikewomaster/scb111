@@ -78,6 +78,7 @@ extern userinfo user_info_default;
 
 extern nbiot_config_t nbiot_config_default;
 extern mqtt_config_t mqtt_config_default;
+extern tcp_config_t tcp_config_default;
 extern uint8_t b_mqtt_Config_Changed;
 
 extern uint16_t usb_rcv_len;
@@ -91,6 +92,7 @@ extern UART_HandleTypeDef huart2;
 
 extern mqtt_config_t mqtt_config;
 extern nbiot_config_t nbiot_config;
+extern tcp_config_t tcp_config;
 
 extern int nb_tcp_rcv_flag;
 extern uint8_t nb_tcp_rcv[256];
@@ -112,7 +114,7 @@ gNbMQTT nb_mqtt;
 int timer6 = 0;
 
 #define MODEL_NAME_STR	"SCB111-485"
-#define SW_VERSION_STR	"v0.5.0"
+#define SW_VERSION_STR	"v0.6.0"
 mod_name_t mod_name_default = {MODEL_NAME_STR};
 software_ver sw_v_default = {SW_VERSION_STR};
 uint32_t g_restore_flag;
@@ -339,6 +341,9 @@ void MX_WoMaster_Init(void)
 	if (read_partition_init(PARTITION_MQTT, (char *)&mqtt_config, sizeof(mqtt_config_t)) < 0)
 		memcpy(&mqtt_config, &mqtt_config_default, sizeof(mqtt_config_t));
 
+	if (read_partition_init(PARTITION_TCP, (char *)&tcp_config, sizeof(tcp_config_t)) < 0)
+		memcpy(&tcp_config, &tcp_config_default, sizeof(tcp_config_t));
+	
 	if (read_partition(PARTITION_UART, (char *)&uart_config, sizeof(uart_config_t)) < 0)
 		MX_USART2_UART_Init();
 	else

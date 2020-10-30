@@ -41,6 +41,7 @@ uint32_t g_nbiot_rx_len;
 
 extern nbiot_config_t nbiot_config;
 extern mqtt_config_t mqtt_config;
+extern tcp_config_t tcp_config;
 /* Private user code ---------------------------------------------------------*/
 void CLR_NBIOT_RxBuf(void)
 {
@@ -342,7 +343,7 @@ int nbiot_init(void)
 			retry_count++;
 		}
 	} while(retry_count <= 10);
-	
+
 	// nbiot_checkSIMStatus();
 	// nbiot_checkNetStatus();
 	retry_count = 0;
@@ -370,9 +371,9 @@ void nbiot_tcp_cnt(void)
 	char cmd[CMD_LENGTH];
 	uint8_t cmdRet = 0;
 	int item = 0;
-	char szBuf[20];	
+	char szBuf[20];
 	int openValue = 1, openTimes = 0;
-	
+
 	memset(cmd,'\0',sizeof(cmd));
 	strcpy(cmd,"AT+CASSLCFG=0,\"SSL\",0");
 	cmdRet = Send_AT_Command(cmd,"OK",CMD_TIMEOUT, 2000);
@@ -386,18 +387,18 @@ void nbiot_tcp_cnt(void)
 	}
 
 	memset(cmd,'\0',sizeof(cmd));
-	sprintf(cmd, "AT+CAOPEN=0,0,\"TCP\",\"%s\",%d", mqtt_config.szServer, mqtt_config.ulPort);
+	sprintf(cmd, "AT+CAOPEN=0,0,\"TCP\",\"%s\",%d", tcp_config.szServer, tcp_config.ulPort);
 
 	do {
 		cmdRet = Send_AT_Command(cmd, "OK", CMD_TIMEOUT, 10000);
 		if(g_nbiot_rx_len > 0) {
 			sscanf(g_nbiot_RxBuffer, "+CAOPEN: 0,%d", &openValue);
 		}
-		
+
 		openTimes ++;
 		HAL_Delay(2000);
 	} while(openValue && openTimes < 6);
-	
+
 	return;
 }
 
@@ -523,13 +524,11 @@ void nbiot_checkNetworkInfo(void)
 		item = sscanf(g_nbiot_RxBuffer,"+CGNAPN: %d,%s", &nbId, szBuf);
 		if (item > 0)
 		{
-			int szBufLen = strlen(szBuf);
-			
-			// CHECK ME
-			// memset(nbiot_config.szAPN, 0, sizeof(nbiot_config.szAPN));
-			// strcpy(nbiot_config.szAPN, szBuf);
-
-			DebugPrintf("nbiot_config.szAPN::::%d, %s\r\n",szBufLen, nbiot_config.szAPN);
+			if (nbId) {
+				memset(nbiot_config.szAPN, 0, sizeof(nbiot_config.szAPN));
+				strcpy(nbiot_config.szAPN, szBuf);
+			}
+			DebugPrintf("nbiot_config.szAPN:::: %s\r\n", nbiot_config.szAPN);
 		}
 	}
 	return;

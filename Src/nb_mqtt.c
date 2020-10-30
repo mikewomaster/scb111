@@ -208,6 +208,10 @@ void mqttNetworkConfigHandle()
 	int retry_count = 0;
 
 	char buf[64] = {0};
+
+	if (!strlen(nbiot_config.szAPN))
+		strcpy(nbiot_config.szAPN, "internet");
+
 	AtCommand at;
 	at_command_parament(&at, "CNCFG");
 
@@ -278,6 +282,8 @@ void mqttOpenHandle(void)
 	nbiot_init();
 	// mqttCheckAPN();
 	// HAL_Delay(100);
+	// mqttCheckOperator;
+	// HAL_Delay(100);
 	// mqttCheckSoftware();
 	HAL_Delay(100);
 	// uartConfigure(gs_baudrate[uart_config.baudrate], uart_config.parity, uart_config.stopBits);
@@ -336,7 +342,7 @@ void mqttCloseHandle ()
 	at.type = writeAT;
 
 	mqttATSend(at, "OK");
-	nbiot_status = CEL_DISCONNECTED;
+	// nbiot_status = CEL_DISCONNECTED;
 }
 
 uint8_t mqttCheckStatusHandle (void)
