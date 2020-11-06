@@ -269,8 +269,10 @@ int mqtt_write_cfg(uint16_t *data, uint8_t offset, uint16_t num, uint16_t part_n
 		case 150:
 			if(offset == 34)
 				memset(&tmp[offset], '\0', 64);
+			else if (offset == 134 || offset == 150)
+				memset(&tmp[offset], '\0', 16);
 			else
-				memset(&tmp[offset], '\0', 32);		
+				memset(&tmp[offset], '\0', 32);
 			set_value_str(p, num, &tmp[offset]);
 			break;
 

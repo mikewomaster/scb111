@@ -114,7 +114,7 @@ gNbMQTT nb_mqtt;
 int timer6 = 0;
 
 #define MODEL_NAME_STR	"SCB111-485"
-#define SW_VERSION_STR	"v0.6.0"
+#define SW_VERSION_STR	"v0.7.0"
 mod_name_t mod_name_default = {MODEL_NAME_STR};
 software_ver sw_v_default = {SW_VERSION_STR};
 uint32_t g_restore_flag;
@@ -163,9 +163,9 @@ int main(void)
 	nbiotDetect();
 	// nbiot_poweroff_on();
 	// uploadMqttUpper();
-	
+
 	HAL_Delay(10);
-	
+
 	gNbTCP *pNbTcp = &nb_tcp;
   /* USER CODE END SysInit */
 

@@ -151,6 +151,14 @@ static void mqttATSend(AtCommand at, char* buf)
 	cmdRet = Send_AT_Command(at.cmd, buf, 2000, 2000);
 }
 
+static void mqttCheckCNACT()
+{
+	AtCommand at;
+	at_command_parament(&at, "CNACT");
+	at.type = readAT;
+	mqttATSend(at, "OK");
+}
+
 void mqttPubHandle(uint8_t* msg, uint16_t len)
 {
 	char cmd[64] = {0};
@@ -158,6 +166,9 @@ void mqttPubHandle(uint8_t* msg, uint16_t len)
 	int retry_count = 0;
 
 	char buf[64] = {0};
+	
+	mqttCheckCNACT();
+	
 	AtCommand at;
 	at_command_parament(&at, "SMPUB");
 
@@ -257,7 +268,7 @@ void mqttSetService()
 	char buf[64] = {0};
 	AtCommand at;
 	at_command_parament(&at, "CNMP");
-	sprintf(buf, "%d", 13);
+	sprintf(buf, "%d", 2); // 2: Automatic; 13: GSM; 38: LTE; 51: GSM&LTE
 	at_command_content(&at, buf);
 	at.type = writeAT;
 	mqttATSend(at, "OK");
@@ -266,7 +277,7 @@ void mqttSetService()
 
 	memset(buf, 0, sizeof(buf));
 	at_command_parament(&at, "CMNB");
-	sprintf(buf, "%d", 2);
+	sprintf(buf, "%d", 3); // 1: CAT-M; 2: NB-IoT; 3: CAT-M & NB-IoT
 	at_command_content(&at, buf);
 	at.type = writeAT;
 	mqttATSend(at, "OK");
@@ -277,12 +288,13 @@ void mqttOpenHandle(void)
 	// HAL_UART_DeInit(&huart2);
 	// mqttSetService();
 	// HAL_Delay(20);
-	mqttNetworkConfigHandle();
-	HAL_Delay(20);
+
 	nbiot_init();
 	// mqttCheckAPN();
-	// HAL_Delay(100);
-	// mqttCheckOperator;
+	HAL_Delay(100);
+	mqttNetworkConfigHandle();
+	// HAL_Delay(20);
+	// mqttCheckOperator();
 	// HAL_Delay(100);
 	// mqttCheckSoftware();
 	HAL_Delay(100);

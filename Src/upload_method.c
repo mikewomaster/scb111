@@ -50,6 +50,9 @@ void uploadMqttUpper()
 		DebugPrintf("open\r\n");
 		HAL_Delay(100);
 		pNbMqtt->mqttOpen();
+	
+		HAL_Delay(10);
+	  nbiot_checkNetworkInfo();
 
 		mqttConfig type;
 		DebugPrintf("configure\r\n");
@@ -71,6 +74,10 @@ void uploadMQTTDowner(char *buf)
 		DebugPrintf("pub\r\n");
 		HAL_Delay(100);
 	  pNbMqtt->mqttPub(buf, strlen(buf));
+
+		// DebugPrintf("disconnect\r\n");
+		// HAL_Delay(100);
+		// pNbMqtt->mqttDisconnect();
 }
 
 void rs485Mqtt()

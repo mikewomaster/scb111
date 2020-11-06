@@ -133,7 +133,7 @@ void tcpRcvAndSnd()
 		// FIX ME: Interval Time Set Required
 		HAL_Delay(15000);
 		gNbTCP *pNbTcp = &nb_tcp;
-	
+
 		nbiot_init();
 		pNbTcp->tcpConnect();
 
