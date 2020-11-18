@@ -224,11 +224,14 @@ int main(void)
 
 				case 1:
 					if (irqNum_idle_uart) {
-						nbiot_poweroff_on();
-						HAL_Delay(10);
-						rs485Mqtt();
-						HAL_Delay(10);
-						nbiot_poweroff_on();
+						if (strlen(rs485_uart_rcv_buffer))
+						{
+							nbiot_poweroff_on();
+							uploadMQTT(rs485_uart_rcv_buffer);
+							HAL_Delay(10);
+							nbiot_poweroff_on();
+						}
+
 						memset(rs485_uart_rcv_buffer, 0, sizeof(rs485_uart_rcv_buffer));
 						rs485_uart_rcv_len = 0;
 						irqNum_idle_uart = 0;

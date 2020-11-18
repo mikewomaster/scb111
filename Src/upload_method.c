@@ -16,8 +16,8 @@ void uploadMQTT(char *buf)
 {
 		gNbMQTT *pNbMqtt = &nb_mqtt;
 
-		DebugPrintf("open\r\n");
-		HAL_Delay(100);
+		// DebugPrintf("open\r\n");
+		// HAL_Delay(100);
 		pNbMqtt->mqttOpen();
 
 		mqttConfig type;
@@ -81,10 +81,11 @@ void uploadMQTTDowner(char *buf)
 }
 
 void rs485Mqtt()
-{
-	if (strlen(rs485_uart_rcv_buffer)){
-		HAL_UART_DeInit(&huart2);
-		uploadMQTT(rs485_uart_rcv_buffer);	
-		uartConfigure(gs_baudrate[uart_config.baudrate], uart_config.parity, uart_config.stopBits);		
+{	
+	if (strlen(rs485_uart_rcv_buffer)){ // not work due to this strlen check the length of string takes a long time
+		// HAL_UART_DeInit(&huart2);
+		uploadMQTT(rs485_uart_rcv_buffer);
+		// uartConfigure(gs_baudrate[uart_config.baudrate], uart_config.parity, uart_config.stopBits);
 	}
+	
 }
