@@ -226,8 +226,11 @@ int main(void)
 					if (irqNum_idle_uart) {
 						if (strlen(rs485_uart_rcv_buffer))
 						{
+							char bufRs485IR[256];
+							memcpy(bufRs485IR, rs485_uart_rcv_buffer, sizeof(bufRs485IR));
 							nbiot_poweroff_on();
-							uploadMQTT(rs485_uart_rcv_buffer);
+							uploadMQTT(bufRs485IR);
+							// uploadMQTT(rs485_uart_rcv_buffer);
 							HAL_Delay(10);
 							nbiot_poweroff_on();
 						}
